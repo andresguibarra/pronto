@@ -8,6 +8,7 @@
     <title></title>
 </head>
 <body>
+    <script src="prueba.js"></script>
     <form id="form1" runat="server">
     <div>
     
@@ -23,9 +24,13 @@
             <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            <asp:Button ID="Button1" runat="server" Text="aspx cs" OnClick="Button1_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button2" runat="server" Text="Button" />
+    <asp:Button ID="Button2" runat="server" Text="Javascript" OnClientClick="button2_OnCLick()" />
+            
+        </p>
+        <p>
+            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
         </p>
     </form>
 </body>
