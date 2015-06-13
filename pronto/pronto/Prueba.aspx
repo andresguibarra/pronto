@@ -12,20 +12,20 @@
     <div>
     
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label1" class="label label-default" runat="server" Text="Label"></asp:Label>
     
     </div>
         <br />
         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label2" class="label label-default" runat="server" Text="Label"></asp:Label>
         <p>
             <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label3" class="label label-default" runat="server" Text="Label"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            <asp:Button ID="Button1" class = "btn btn-default"  runat="server" OnClick="Button1_Click" Text="Button" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button2" runat="server" Text="Button" />
+            <asp:Button ID="Button2" class ="btn btn-default" runat="server" Text="Button" />
         </p>
     </form>
 </body>
