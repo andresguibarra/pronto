@@ -13,5 +13,13 @@ namespace pronto
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label1.Text = TextBox1.Text;
+            Label2.Text = TextBox2.Text;
+            Label3.Text = TextBox3.Text;
+        }
+
     }
 }

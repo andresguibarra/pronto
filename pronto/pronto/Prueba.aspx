@@ -8,6 +8,7 @@
     <title></title>
 </head>
 <body>
+    <script src="prueba.js"></script>
     <link href="bootstrap/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" />
     <form id="form1" runat="server">
     <div>
@@ -24,9 +25,12 @@
             <asp:Label ID="Label3" class="label label-default" runat="server" Text="Label"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="Button1" class = "btn btn-default"  runat="server"  Text="Button" />
+            <asp:Button ID="Button1" runat="server" class = "btn btn-default" OnClick="Button1_Click" Text="Button" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button2" class ="btn btn-default" runat="server" Text="Button" />
+            <asp:Button ID="Button2" class ="btn btn-default" runat="server" Text="Button" OnClientClick="return button2_OnCLick()" />
+        </p>
+        <p>
+            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
         </p>
     </form>
 </body>

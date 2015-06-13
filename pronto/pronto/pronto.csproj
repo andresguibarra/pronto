@@ -81,6 +81,7 @@
     <Content Include="bootstrap\bootstrap-3.3.4-dist\js\npm.js" />
     <Content Include="Global.asax" />
     <Content Include="Prueba.aspx" />
+    <Content Include="prueba.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
