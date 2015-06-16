@@ -2,3 +2,29 @@
     width:40em;
     margin: 0 auto;
 }
+
+tr {
+height:4em;
+}
+
+.warning {
+  position: absolute;
+  display:none;
+}
+.warningShow{
+    position: absolute;
+    
+}
+.btnAlta{
+      width: 10em;
+  margin: 3em 25%;
+}
+
+td{
+    min-width:12em;
+}
+
+.campoCalcular{
+    width: 10em;
+  margin-left: 5em;
+}

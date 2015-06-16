@@ -38,7 +38,7 @@ namespace pronto02
         #endregion
 
         #region PROPIEDAD
-        public decimal Codigo_Barras
+        public decimal CodigoDeBarras
         {
             get
             {

@@ -35,7 +35,7 @@ namespace pronto02
         public static int DarAlta(Producto p)
         {
             SqlConnection conex = AbrirDB();
-            String sentencia = "INSERT INTO PRODUCTO VALUES (" + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Codigo_Barras) + ", '" + p.Nombre + "', " + p.Categoria.ID + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Costo) + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Venta) + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Ganancia) + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Stock) + ")";
+            String sentencia = "INSERT INTO PRODUCTO VALUES (" + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.CodigoDeBarras) + ", '" + p.Nombre + "', " + p.Categoria.ID + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Costo) + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Venta) + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Ganancia) + ", " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Stock) + ")";
             SqlCommand comando = new SqlCommand(sentencia, conex);
             return comando.ExecuteNonQuery();
         }
@@ -43,7 +43,7 @@ namespace pronto02
         public static int DarBaja(Producto p)
         {
             SqlConnection conex = AbrirDB();
-            String sentencia = "DELETE FROM PRODUCTO WHERE cod_barras = " + p.Codigo_Barras;
+            String sentencia = "DELETE FROM PRODUCTO WHERE cod_barras = " + p.CodigoDeBarras;
             SqlCommand comando = new SqlCommand(sentencia, conex);
             return comando.ExecuteNonQuery();
         }
@@ -51,7 +51,7 @@ namespace pronto02
         public static int Modificar(Producto viejo, Producto p)
         {
             SqlConnection conex = AbrirDB();
-            String sentencia = "UPDATE PRODUCTO SET cod_barras = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Codigo_Barras) + ", nombre = '" + p.Nombre + "', categoria = " + p.Categoria.ID + ", precio_costo = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Costo) + ", precio_venta = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Venta) + ", ganancia = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Ganancia) + ", stock = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Stock) + " WHERE cod_barras = " + viejo.Codigo_Barras;
+            String sentencia = "UPDATE PRODUCTO SET cod_barras = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.CodigoDeBarras) + ", nombre = '" + p.Nombre + "', categoria = " + p.Categoria.ID + ", precio_costo = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Costo) + ", precio_venta = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Precio_Venta) + ", ganancia = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Ganancia) + ", stock = " + string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.0}", p.Stock) + " WHERE cod_barras = " + viejo.CodigoDeBarras;
             SqlCommand comando = new SqlCommand(sentencia, conex);
             return comando.ExecuteNonQuery();
         }
