@@ -18,6 +18,7 @@ height:4em;
 .btnAlta{
       width: 10em;
   margin: 3em 25%;
+  background-color:#91c574;
 }
 
 td{
@@ -27,4 +28,9 @@ td{
 .campoCalcular{
     width: 10em;
   margin-left: 5em;
+}
+
+.titulo{
+    color: #5fb677;
+      margin: 0 5em;
 }

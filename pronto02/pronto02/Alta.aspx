@@ -1,13 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Alta.aspx.cs" Inherits="pronto02.Alta" %>
+﻿<%@ Page Title="Alta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Alta.aspx.cs" Inherits="pronto02.Alta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="Scripts/alta.js"></script>
+    <script src="Scripts/jquery.numeric.js"></script>
     <link href="Estilos/alta.css" rel="stylesheet" />
     <link href="BootstrapSelect/dist/css/bootstrap-select.css" rel="stylesheet" />
     <script src="BootstrapSelect/dist/js/bootstrap-select.js"></script>
     <div id="contenedor">
         <h1>
-            <asp:Label ID="Label1" class="label label-primary" runat="server" Text="Alta"></asp:Label></h1>
+            <asp:Label ID="Label1" class="titulo" runat="server" Text="Alta"></asp:Label></h1>
         <table>
             <tr>
                 <td>
@@ -15,7 +16,7 @@
 
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCodigoDeBarras" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtCodigoDeBarras" ClientIDMode="Static" class="form-control" runat="server"></asp:TextBox>
                     <div class="warning"><asp:Label ID="lblCodigoBarraWarning" class="label label-danger" runat="server" Text="Debe ingresar solo numeros"></asp:Label></div>
                 </td>
             </tr>
@@ -27,7 +28,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Nombre Producto"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNombreProducto" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreProducto" ClientIDMode="Static" class="form-control" runat="server"></asp:TextBox>
                     <div class="warning"><asp:Label ID="Label8" class="label label-danger" runat="server" Text="Debe ingresar numeros (0-9) o letras (a-z)"></asp:Label></div>
                 </td>
             </tr>
@@ -70,6 +71,7 @@
                    
                     <%--<div class="col-lg-4">--%>
                         <div class="input-group campoCalcular">
+                            <p style="position:absolute; transform:translate(-150%, 30% )">%</p>
                             <asp:TextBox ID="txtPorcentaje" class="form-control" ClientIDMode="Static" runat="server"></asp:TextBox>
                             <span class="input-group-btn">
                                 <asp:Button ID="btnCalcular" TabIndex="-1" class="btn btn-default" ClientIDMode="Static" OnClientClick="calcularPrecio(); return false;" runat="server" Text="Calcular" />
