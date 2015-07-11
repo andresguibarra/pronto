@@ -14,3 +14,12 @@
 .navbar-inverse .navbar-brand {
     color: #e1ebc1;
 }
+
+#contenedor{
+    width:40em;
+    margin: 0 auto;
+}
+.titulo{
+    color: #5fb677;
+      margin: 0 5em;
+}
