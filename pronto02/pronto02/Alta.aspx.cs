@@ -9,9 +9,12 @@ namespace pronto02
 {
     public partial class Alta : System.Web.UI.Page
     {
+        List<CATEGORIA> listaCategorias = new List<CATEGORIA>();
+        PRONTODBEntities db;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //cargarComboCategoria();
+            db = new PRONTODBEntities();
+            cargarComboCategoria();
         }
 
         protected void btnAlta_Click(object sender, EventArgs e)
@@ -20,16 +23,27 @@ namespace pronto02
             {
                 decimal codigo_Barras = decimal.Parse(this.txtCodigoDeBarras.Text);
                 string nombreProducto = this.txtNombreProducto.Text;
-                //Categoria categoria = this.basic.SelectedIndex;
-                decimal precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
+                CATEGORIA categoria = listaCategorias.Find(x => x.nombre.Equals(this.basic.Value));
+                decimal precioCosto;
+                decimal ganancia;
                 decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
-                using (var db = new PRONTODBEntities())
+                if (String.IsNullOrEmpty(this.txtPrecioCosto.Text))
                 {
-                    CATEGORIA categoria = new CATEGORIA { nombre= "Gaseosa", id = 2, };
-                    var producto = new PRODUCTO {cod_barras= 1023213,Nombre= "AndresHola", Stock= 1M, Precio_venta = 10M, Precio_costo= 20M, CATEGORIA = categoria, Ganancia = 10M};
-                    db.PRODUCTO.Add(producto);
-                    db.SaveChanges();
+                    precioCosto = 0;
+                    ganancia = 0;
                 }
+                else
+                {
+                    precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
+                    ganancia = precioVenta - precioCosto;
+                }        
+                var producto = new PRODUCTO { cod_barras = codigo_Barras, Nombre = nombreProducto, Stock = 1M, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia };
+                db.PRODUCTO.Add(producto);
+                db.SaveChanges();
+                this.txtCodigoDeBarras.Text = string.Empty;
+                this.txtNombreProducto.Text = string.Empty;
+                this.txtPrecioCosto.Text = string.Empty;
+                this.txtPrecioVenta.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -40,12 +54,11 @@ namespace pronto02
         }
         private void cargarComboCategoria()
         {
-            //List<Categoria> listaCategorias = new List<Categoria>();
-            //
-            //foreach (Categoria categoria in listaCategorias)
-            //{
-            //    this.basic.Items.Add(new ListItem(categoria.Nombre, categoria.ID.ToString()));
-            //}
+            listaCategorias = db.CATEGORIA.ToList();
+            foreach (CATEGORIA c in listaCategorias)
+            {
+                this.basic.Items.Add(new ListItem(c.nombre));
+            }
         }
     }
 }

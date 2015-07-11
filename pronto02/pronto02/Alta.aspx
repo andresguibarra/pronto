@@ -40,13 +40,13 @@
                 </td>
                 <td>
                     <select id="basic" runat="server" class="selectpicker show-tick form-control" data-live-search="true">
-                        <option>Gaseosas</option>
+                        <%--<option>Gaseosas</option>
                         <option>Cigarrillos</option>
                         <option>Bebidas Alcoholicas</option>
                         <option>Artículos de limpieza</option>
                         <option>Librería</option>
                         <option>Golosinas</option>
-                        <option>Perfumería</option>
+                        <option>Perfumería</option>--%>
                         <%--<option data-subtext="option subtext">bull</option>
                         <option class="get-class" disabled>ox</option>
                         <optgroup label="test" data-subtext="optgroup subtext">
