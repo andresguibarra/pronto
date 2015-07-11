@@ -16,22 +16,36 @@ namespace pronto02
 
         protected void btnAlta_Click(object sender, EventArgs e)
         {
-            decimal codigo_Barras = decimal.Parse(this.txtCodigoDeBarras.Text);
-            string nombreProducto = this.txtNombreProducto.Text;
-            //Categoria categoria = this.basic.SelectedIndex;
-            decimal precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
-            decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
-            Producto producto = new Producto(codigo_Barras,nombreProducto,new Categoria(1,"Ejemplo"),precioCosto,precioVenta,decimal.MinValue);
-            ABMProducto.DarAlta(producto);
+            try
+            {
+                decimal codigo_Barras = decimal.Parse(this.txtCodigoDeBarras.Text);
+                string nombreProducto = this.txtNombreProducto.Text;
+                //Categoria categoria = this.basic.SelectedIndex;
+                decimal precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
+                decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
+                using (var db = new PRONTODBEntities())
+                {
+                    CATEGORIA categoria = new CATEGORIA { nombre= "Gaseosa", id = 2, };
+                    var producto = new PRODUCTO {cod_barras= 1023213,Nombre= "AndresHola", Stock= 1M, Precio_venta = 10M, Precio_costo= 20M, CATEGORIA = categoria, Ganancia = 10M};
+                    db.PRODUCTO.Add(producto);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                //("alert('"+ex.Message+"');");
+                throw;
+            }
+            
         }
         private void cargarComboCategoria()
         {
-            List<Categoria> listaCategorias = new List<Categoria>();
-            
-            foreach (Categoria categoria in listaCategorias)
-            {
-                this.basic.Items.Add(new ListItem(categoria.Nombre, categoria.ID.ToString()));
-            }
+            //List<Categoria> listaCategorias = new List<Categoria>();
+            //
+            //foreach (Categoria categoria in listaCategorias)
+            //{
+            //    this.basic.Items.Add(new ListItem(categoria.Nombre, categoria.ID.ToString()));
+            //}
         }
     }
 }

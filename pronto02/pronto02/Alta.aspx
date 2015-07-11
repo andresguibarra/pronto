@@ -17,7 +17,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtCodigoDeBarras" ClientIDMode="Static" class="form-control" runat="server"></asp:TextBox>
-                    <div class="warning"><asp:Label ID="lblCodigoBarraWarning" class="label label-danger" runat="server" Text="Debe ingresar solo numeros"></asp:Label></div>
+                    <asp:Label ID="lblCodigoBarraWarning" class="label label-danger warning" runat="server" Text="Debe ingresar solo numeros"></asp:Label>
                 </td>
             </tr>
 
@@ -29,7 +29,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtNombreProducto" ClientIDMode="Static" class="form-control" runat="server"></asp:TextBox>
-                    <div class="warning"><asp:Label ID="Label8" class="label label-danger" runat="server" Text="Debe ingresar numeros (0-9) o letras (a-z)"></asp:Label></div>
+                    <asp:Label ID="lblNombreProductoWarning" ClientIDMode="Static" class="label label-danger warning" runat="server" Text="Debe ingresar numeros (0-9) o letras (a-z)"></asp:Label>
                 </td>
             </tr>
 
