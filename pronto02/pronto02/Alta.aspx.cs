@@ -14,7 +14,11 @@ namespace pronto02
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new PRONTODBEntities();
-            cargarComboCategoria();
+            if (!this.IsPostBack)
+            {
+                cargarComboCategoria();
+
+            }
         }
 
         protected void btnAlta_Click(object sender, EventArgs e)
@@ -23,7 +27,7 @@ namespace pronto02
             {
                 decimal codigo_Barras = decimal.Parse(this.txtCodigoDeBarras.Text);
                 string nombreProducto = this.txtNombreProducto.Text;
-                CATEGORIA categoria = listaCategorias.Find(x => x.nombre.Equals(this.basic.Value));
+                CATEGORIA categoria = listaCategorias.Find(x => x.Nombre.Equals(this.basic.Value));
                 decimal precioCosto;
                 decimal ganancia;
                 decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
@@ -36,8 +40,8 @@ namespace pronto02
                 {
                     precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
                     ganancia = precioVenta - precioCosto;
-                }        
-                var producto = new PRODUCTO { cod_barras = codigo_Barras, Nombre = nombreProducto, Stock = 1M, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia };
+                }
+                var producto = new PRODUCTO { cod_barras = codigo_Barras, Nombre = nombreProducto, Stock = 1, Precio_Venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia };
                 db.PRODUCTO.Add(producto);
                 db.SaveChanges();
                 this.txtCodigoDeBarras.Text = string.Empty;
@@ -50,14 +54,14 @@ namespace pronto02
                 //("alert('"+ex.Message+"');");
                 throw;
             }
-            
+
         }
         private void cargarComboCategoria()
         {
             listaCategorias = db.CATEGORIA.ToList();
             foreach (CATEGORIA c in listaCategorias)
             {
-                this.basic.Items.Add(new ListItem(c.nombre));
+                this.basic.Items.Add(new ListItem(c.Nombre));
             }
         }
     }

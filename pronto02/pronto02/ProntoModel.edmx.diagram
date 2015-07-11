@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b76e91645a2e4c6da67e512c6b582ff6" Name="Diagram1">
+      <Diagram DiagramId="56f67da5692d4f7595fb9ad0ebb6bace" Name="Diagram1">
         <EntityTypeShape EntityType="PRONTODBModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PRONTODBModel.PRODUCTO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="PRONTODBModel.FK__PRODUCTO__Catego__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="PRONTODBModel.FK__PRODUCTO__Catego__4BAC3F29" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

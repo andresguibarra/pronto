@@ -7,29 +7,30 @@
       <Schema Namespace="PRONTODBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
-            <PropertyRef Name="cod_barras" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cod_barras" Type="numeric" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Categoria" Type="int" Nullable="false" />
-          <Property Name="Precio_costo" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Precio_venta" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Ganancia" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Stock" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Precio_costo" Type="numeric" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Precio_Venta" Type="numeric" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Ganancia" Type="numeric" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__PRODUCTO__Catego__25869641">
+        <Association Name="FK__PRODUCTO__Catego__4BAC3F29">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CATEGORIA">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PRODUCTO">
               <PropertyRef Name="Categoria" />
@@ -39,7 +40,7 @@
         <EntityContainer Name="PRONTODBModelStoreContainer">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__PRODUCTO__Catego__25869641" Association="Self.FK__PRODUCTO__Catego__25869641">
+          <AssociationSet Name="FK__PRODUCTO__Catego__4BAC3F29" Association="Self.FK__PRODUCTO__Catego__4BAC3F29">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
@@ -51,32 +52,33 @@
       <Schema Namespace="PRONTODBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CATEGORIA">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Catego__25869641" FromRole="CATEGORIA" ToRole="PRODUCTO" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Catego__4BAC3F29" FromRole="CATEGORIA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
-            <PropertyRef Name="cod_barras" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_barras" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Precio_costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Ganancia" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Stock" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__PRODUCTO__Catego__25869641" FromRole="PRODUCTO" ToRole="CATEGORIA" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio_costo" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Precio_Venta" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Ganancia" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__PRODUCTO__Catego__4BAC3F29" FromRole="PRODUCTO" ToRole="CATEGORIA" />
         </EntityType>
-        <Association Name="FK__PRODUCTO__Catego__25869641">
+        <Association Name="FK__PRODUCTO__Catego__4BAC3F29">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
         </Association>
         <EntityContainer Name="PRONTODBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
-          <AssociationSet Name="FK__PRODUCTO__Catego__25869641" Association="Self.FK__PRODUCTO__Catego__25869641">
+          <AssociationSet Name="FK__PRODUCTO__Catego__4BAC3F29" Association="Self.FK__PRODUCTO__Catego__4BAC3F29">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
@@ -90,29 +92,30 @@
           <EntitySetMapping Name="CATEGORIA">
             <EntityTypeMapping TypeName="PRONTODBModel.CATEGORIA">
               <MappingFragment StoreEntitySet="CATEGORIA">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTO">
             <EntityTypeMapping TypeName="PRONTODBModel.PRODUCTO">
               <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Precio_costo" ColumnName="Precio_costo" />
-                <ScalarProperty Name="Precio_venta" ColumnName="Precio_venta" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
                 <ScalarProperty Name="Ganancia" ColumnName="Ganancia" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK__PRODUCTO__Catego__25869641" TypeName="PRONTODBModel.FK__PRODUCTO__Catego__25869641" StoreEntitySet="PRODUCTO">
+          <AssociationSetMapping Name="FK__PRODUCTO__Catego__4BAC3F29" TypeName="PRONTODBModel.FK__PRODUCTO__Catego__4BAC3F29" StoreEntitySet="PRODUCTO">
             <EndProperty Name="CATEGORIA">
-              <ScalarProperty Name="id" ColumnName="Categoria" />
+              <ScalarProperty Name="ID" ColumnName="Categoria" />
             </EndProperty>
             <EndProperty Name="PRODUCTO">
-              <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
+              <ScalarProperty Name="ID" ColumnName="ID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

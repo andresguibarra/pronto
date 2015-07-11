@@ -22,12 +22,12 @@ namespace pronto02
             producto.cod_barras = 10M;
             producto.Nombre = "Hola";
             CATEGORIA categoria = new  CATEGORIA();
-            categoria.id = 2;
-            categoria.nombre = "Gaseosa";
+            categoria.ID = 2;
+            categoria.Nombre = "Gaseosa";
             producto.CATEGORIA = categoria;
             producto.Precio_costo = 10M;
-            producto.Precio_venta = 20M;
-            producto.Stock = 1M;
+            producto.Precio_Venta = 20M;
+            producto.Stock = 1;
             prontoEntities.PRODUCTO.Add(producto);
             prontoEntities.SaveChanges();
 
