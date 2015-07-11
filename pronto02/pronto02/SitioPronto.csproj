@@ -157,6 +157,10 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Alta.aspx" />
+    <Content Include="App_Data\prontoDB.mdf" />
+    <Content Include="App_Data\prontoDB_log.ldf">
+      <DependentUpon>prontoDB.mdf</DependentUpon>
+    </Content>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\AspNet.ScriptManager.bootstrap.dll" />
     <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
@@ -479,7 +483,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
