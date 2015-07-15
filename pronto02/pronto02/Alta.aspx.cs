@@ -9,11 +9,41 @@ namespace pronto02
 {
     public partial class Alta : System.Web.UI.Page
     {
-        List<CATEGORIA> listaCategorias = new List<CATEGORIA>();
-        PRONTODBEntities db;
+        #region Propiedades
+        public List<CATEGORIA> listaCategorias
+        {
+            get
+            {
+
+                if (HttpContext.Current.Session["listaCategorias"] == null)
+                    HttpContext.Current.Session["listaCategorias"] = new List<CATEGORIA>();
+                return (List<CATEGORIA>)HttpContext.Current.Session["listaCategorias"];
+            }
+            set
+            {
+                HttpContext.Current.Session["listaCategorias"] = value;
+            }
+        }
+
+        public PRONTODBEntities db
+        {
+            get
+            {
+                if (HttpContext.Current.Session["db"] == null)
+                {
+                    HttpContext.Current.Session["db"] = new PRONTODBEntities();
+                }
+                return (PRONTODBEntities)HttpContext.Current.Session["db"];
+            }
+            set
+            {
+                HttpContext.Current.Session["db"] = value;
+            }
+
+        }
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = new PRONTODBEntities();
             if (!this.IsPostBack)
             {
                 cargarComboCategoria();
@@ -49,10 +79,15 @@ namespace pronto02
                 this.txtPrecioCosto.Text = string.Empty;
                 this.txtPrecioVenta.Text = string.Empty;
             }
+            catch (FormatException)
+            {
+                string message = "No se han completado todos los campos correctamente.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + message + "');", true);
+            }
             catch (Exception ex)
             {
-                //("alert('"+ex.Message+"');");
-                throw;
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + ex.Message + "');", true);
+
             }
 
         }
@@ -63,6 +98,10 @@ namespace pronto02
             {
                 this.basic.Items.Add(new ListItem(c.Nombre));
             }
+        }
+        protected void Page_UnLoad(object sender, EventArgs e)
+        {
+            db.Database.Connection.Close();
         }
     }
 }
