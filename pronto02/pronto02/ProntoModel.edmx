@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PRONTODBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PRONTODBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA">
           <Key>
             <PropertyRef Name="id" />
@@ -24,6 +24,17 @@
           <Property Name="Ganancia" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Stock" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vn_Categoria">
+          <Key>
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
         <Association Name="FK__PRODUCTO__Catego__25869641">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
@@ -39,13 +50,19 @@
         <EntityContainer Name="PRONTODBModelStoreContainer">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vn_Categoria" EntityType="Self.Vn_Categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vn_Categoria].[Categoria] AS [Categoria], 
+    [Vn_Categoria].[Nombre] AS [Nombre], 
+    [Vn_Categoria].[Cantidad] AS [Cantidad]
+    FROM [dbo].[Vn_Categoria] AS [Vn_Categoria]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__PRODUCTO__Catego__25869641" Association="Self.FK__PRODUCTO__Catego__25869641">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PRONTODBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -80,7 +97,17 @@
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <EntitySet Name="Vn_Categoria" EntityType="PRONTODBModel.Vn_Categoria" />
         </EntityContainer>
+        <EntityType Name="Vn_Categoria">
+          <Key>
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -115,6 +142,15 @@
               <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Vn_Categoria">
+            <EntityTypeMapping TypeName="PRONTODBModel.Vn_Categoria">
+              <MappingFragment StoreEntitySet="Vn_Categoria">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
