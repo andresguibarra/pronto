@@ -14,12 +14,13 @@ namespace pronto02
     
     public partial class PRODUCTO
     {
+        public int ID { get; set; }
         public decimal cod_barras { get; set; }
         public string Nombre { get; set; }
         public decimal Precio_costo { get; set; }
-        public decimal Precio_venta { get; set; }
+        public decimal Precio_Venta { get; set; }
         public decimal Ganancia { get; set; }
-        public decimal Stock { get; set; }
+        public int Stock { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }
     }

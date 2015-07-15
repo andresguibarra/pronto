@@ -67,13 +67,13 @@ namespace pronto02 {
         protected global::System.Web.UI.WebControls.TextBox txtNombreProducto;
         
         /// <summary>
-        /// Control Label8.
+        /// Control lblNombreProductoWarning.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label lblNombreProductoWarning;
         
         /// <summary>
         /// Control Label4.
