@@ -41,13 +41,17 @@
                 <%--<asp:BoundField DataField="Nombre"  />--%>
             </Columns>
         </asp:GridView>
-            
-            <div class="input-group campoCalcular">
-                <span class="input-group-btn">
-                <asp:LinkButton ID="Agregar" CssClass="btn btn-default" OnClick="Agregar_Click" runat="server">Agregar</asp:LinkButton>
-                </span>
-                <asp:TextBox ID="txtNombreAgregar" runat="server" CssClass="form-control"></asp:TextBox>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <asp:LinkButton ID="Agregar" CssClass="btn btn-default" OnClick="Agregar_Click" runat="server">Agregar</asp:LinkButton>
+                    </span>
+                    <asp:TextBox ID="txtNombreAgregar" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
             </div>
+        </div>
     </div>
 
 </asp:Content>
