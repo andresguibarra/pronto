@@ -19,8 +19,8 @@ namespace pronto02
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
-        public int ID { get; set; }
-        public string Nombre { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
     
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }

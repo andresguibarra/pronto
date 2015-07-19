@@ -281,6 +281,7 @@
     <Content Include="BootstrapSelect\js\i18n\defaults-es_CL.js" />
     <Content Include="BootstrapSelect\test.html" />
     <Content Include="Categoria.aspx" />
+    <Content Include="Consulta.aspx" />
     <Content Include="Estilos\alta.css" />
     <Content Include="Estilos\General.css" />
     <Content Include="Modificacion.aspx" />
@@ -330,6 +331,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\categoria.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.numeric.js" />
@@ -432,6 +434,13 @@
     </Compile>
     <Compile Include="CATEGORIA.cs">
       <DependentUpon>ProntoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta.aspx.cs">
+      <DependentUpon>Consulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consulta.aspx.designer.cs">
+      <DependentUpon>Consulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

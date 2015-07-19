@@ -18,7 +18,7 @@
           </Key>
           <Property Name="cod_barras" Type="numeric" Precision="38" Scale="0" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="Categoria" Type="int" />
           <Property Name="Precio_costo" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Precio_venta" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Ganancia" Type="numeric" Precision="10" Scale="2" Nullable="false" />
@@ -28,15 +28,17 @@
 advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vn_Categoria">
           <Key>
-            <PropertyRef Name="Categoria" />
             <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Categoria" />
           </Key>
           <Property Name="Categoria" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cantidad" Type="int" />
         </EntityType>
-        <Association Name="FK__PRODUCTO__Catego__25869641">
-          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
+        <Association Name="FK__PRODUCTO__Catego__5AEE82B9">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CATEGORIA">
@@ -57,7 +59,7 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
     [Vn_Categoria].[Cantidad] AS [Cantidad]
     FROM [dbo].[Vn_Categoria] AS [Vn_Categoria]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__PRODUCTO__Catego__25869641" Association="Self.FK__PRODUCTO__Catego__25869641">
+          <AssociationSet Name="FK__PRODUCTO__Catego__5AEE82B9" Association="Self.FK__PRODUCTO__Catego__5AEE82B9">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
@@ -145,9 +147,9 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
           <EntitySetMapping Name="Vn_Categoria">
             <EntityTypeMapping TypeName="PRONTODBModel.Vn_Categoria">
               <MappingFragment StoreEntitySet="Vn_Categoria">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
