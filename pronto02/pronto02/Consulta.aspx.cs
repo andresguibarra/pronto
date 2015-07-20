@@ -30,7 +30,7 @@ namespace pronto02
             listaCategorias = db.CATEGORIA.ToList();
             foreach (CATEGORIA c in listaCategorias)
             {
-                this.cbCategoria.Items.Add(new ListItem(c.Nombre));
+                this.cbCategoria.Items.Add(new ListItem(c.nombre));
             }
         }
 
@@ -50,12 +50,12 @@ namespace pronto02
             else if (!string.IsNullOrEmpty(txtNombre.Text))
             {
                 if (!cbCategoria.Value.Equals("Todas"))
-                    GridView1.DataSource = db.PRODUCTO.Where(x => x.Nombre.Contains(txtNombre.Text) && x.CATEGORIA.Nombre.Equals(cbCategoria.Value)).ToList();
+                    GridView1.DataSource = db.PRODUCTO.Where(x => x.Nombre.Contains(txtNombre.Text) && x.CATEGORIA.nombre.Equals(cbCategoria.Value)).ToList();
                 else
                     GridView1.DataSource = db.PRODUCTO.Where(x => x.Nombre.Contains(txtNombre.Text)).ToList();
             }
             else if (!cbCategoria.Value.Equals("Todas"))
-                GridView1.DataSource = db.PRODUCTO.Where(x => x.CATEGORIA.Nombre.Equals(cbCategoria.Value)).ToList();
+                GridView1.DataSource = db.PRODUCTO.Where(x => x.CATEGORIA.nombre.Equals(cbCategoria.Value)).ToList();
             else
                 GridView1.DataSource = db.PRODUCTO.ToList();
             GridView1.DataBind();
