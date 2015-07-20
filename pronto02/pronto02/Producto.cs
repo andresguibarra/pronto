@@ -14,7 +14,8 @@ namespace pronto02
     
     public partial class PRODUCTO
     {
-        public decimal cod_barras { get; set; }
+        public decimal Id { get; set; }
+        public string cod_barras { get; set; }
         public string Nombre { get; set; }
         public decimal Precio_costo { get; set; }
         public decimal Precio_venta { get; set; }

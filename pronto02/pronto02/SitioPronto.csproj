@@ -284,11 +284,13 @@
     <Content Include="Categoria.aspx" />
     <Content Include="Consulta.aspx" />
     <Content Include="Estilos\alta.css" />
+    <Content Include="Estilos\consulta.css" />
     <Content Include="Estilos\General.css" />
     <Content Include="Modificacion.aspx" />
     <Content Include="obj\Debug\pronto02.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\pronto02.dll" />
     <Content Include="obj\Debug\pronto02.pdb" />
+    <Content Include="ProntoModel.edmx.sql" />
     <Content Include="Scripts\alta.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -333,6 +335,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\categoria.js" />
+    <Content Include="Scripts\consulta.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.numeric.js" />

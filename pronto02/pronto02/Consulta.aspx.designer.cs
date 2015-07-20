@@ -13,15 +13,6 @@ namespace pronto02 {
     public partial class Consulta {
         
         /// <summary>
-        /// Control Panel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
         /// Control txtCodBarras.
         /// </summary>
         /// <remarks>
@@ -40,22 +31,22 @@ namespace pronto02 {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// Control cbCategoria.
+        /// Control basic.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect cbCategoria;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect basic;
         
         /// <summary>
-        /// Control btBuscar.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btBuscar;
+        protected global::System.Web.UI.WebControls.LinkButton btnBuscar;
         
         /// <summary>
         /// Control GridView1.

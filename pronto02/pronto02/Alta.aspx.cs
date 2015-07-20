@@ -55,7 +55,6 @@ namespace pronto02
         {
             try
             {
-                decimal codigo_Barras = decimal.Parse(this.txtCodigoDeBarras.Text);
                 string nombreProducto = this.txtNombreProducto.Text;
                 CATEGORIA categoria = listaCategorias.Find(x => x.nombre.Equals(this.basic.Value));
                 decimal precioCosto;
@@ -71,7 +70,7 @@ namespace pronto02
                     precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
                     ganancia = precioVenta - precioCosto;
                 }
-                var producto = new PRODUCTO { cod_barras = codigo_Barras, Nombre = nombreProducto, Stock = 1, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia };
+                var producto = new PRODUCTO { cod_barras = this.txtCodigoDeBarras.Text, Nombre = nombreProducto, Stock = 1, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia };
                 db.PRODUCTO.Add(producto);
                 db.SaveChanges();
                 this.txtCodigoDeBarras.Text = string.Empty;
