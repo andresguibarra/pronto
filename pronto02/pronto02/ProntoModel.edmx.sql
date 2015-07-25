@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/19/2015 23:33:38
--- Generated from EDMX file: C:\Users\Home\Source\Repos\ProntoNuevo\pronto02\pronto02\ProntoModel.edmx
+-- Date Created: 07/25/2015 17:46:51
+-- Generated from EDMX file: C:\Users\Andres\Source\Repos\pronto2\pronto02\pronto02\ProntoModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,8 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK__PRODUCTO__Catego__5AEE82B9]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PRODUCTO] DROP CONSTRAINT [FK__PRODUCTO__Catego__5AEE82B9];
+IF OBJECT_ID(N'[dbo].[FK__PRODUCTO__Catego__02FC7413]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PRODUCTO] DROP CONSTRAINT [FK__PRODUCTO__Catego__02FC7413];
 GO
 
 -- --------------------------------------------------
@@ -31,8 +31,11 @@ GO
 IF OBJECT_ID(N'[dbo].[PRODUCTO]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PRODUCTO];
 GO
-IF OBJECT_ID(N'[PRONTODBModelStoreContainer].[Vn_Categoria]', 'U') IS NOT NULL
-    DROP TABLE [PRONTODBModelStoreContainer].[Vn_Categoria];
+IF OBJECT_ID(N'[dbo].[Vn_Categoria]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Vn_Categoria];
+GO
+IF OBJECT_ID(N'[dbo].[Prioridad]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Prioridad];
 GO
 
 -- --------------------------------------------------
@@ -48,14 +51,14 @@ GO
 
 -- Creating table 'PRODUCTO'
 CREATE TABLE [dbo].[PRODUCTO] (
-    [cod_barras] nvarchar(max)  NOT NULL,
+    [Id] decimal(10,0) IDENTITY(1,1) NOT NULL,
+    [cod_barras] varchar(40)  NULL,
     [Nombre] varchar(50)  NOT NULL,
     [Precio_costo] decimal(10,2)  NOT NULL,
     [Precio_venta] decimal(10,2)  NOT NULL,
     [Ganancia] decimal(10,2)  NOT NULL,
     [Stock] decimal(10,0)  NOT NULL,
-    [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
-    [CATEGORIA_id] int  NOT NULL
+    [CATEGORIA_id] int  NULL
 );
 GO
 
@@ -64,6 +67,15 @@ CREATE TABLE [dbo].[Vn_Categoria] (
     [Categoria] int  NOT NULL,
     [Nombre] varchar(50)  NOT NULL,
     [Cantidad] int  NULL
+);
+GO
+
+-- Creating table 'Prioridad'
+CREATE TABLE [dbo].[Prioridad] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Nombre] nvarchar(max)  NOT NULL,
+    [Cantidad_Minima] nvarchar(max)  NOT NULL,
+    [Cantidad_Media] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -89,20 +101,26 @@ ADD CONSTRAINT [PK_Vn_Categoria]
     PRIMARY KEY CLUSTERED ([Categoria], [Nombre] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'Prioridad'
+ALTER TABLE [dbo].[Prioridad]
+ADD CONSTRAINT [PK_Prioridad]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
 -- Creating foreign key on [CATEGORIA_id] in table 'PRODUCTO'
 ALTER TABLE [dbo].[PRODUCTO]
-ADD CONSTRAINT [FK__PRODUCTO__Catego__25869641]
+ADD CONSTRAINT [FK__PRODUCTO__Catego__02FC7413]
     FOREIGN KEY ([CATEGORIA_id])
     REFERENCES [dbo].[CATEGORIA]
         ([id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK__PRODUCTO__Catego__25869641'
-CREATE INDEX [IX_FK__PRODUCTO__Catego__25869641]
+-- Creating non-clustered index for FOREIGN KEY 'FK__PRODUCTO__Catego__02FC7413'
+CREATE INDEX [IX_FK__PRODUCTO__Catego__02FC7413]
 ON [dbo].[PRODUCTO]
     ([CATEGORIA_id]);
 GO

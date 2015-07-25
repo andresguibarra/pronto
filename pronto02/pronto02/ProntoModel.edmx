@@ -12,18 +12,27 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Prioridad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cantidad_Minima" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cantidad_Media" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cod_barras" Type="varchar" MaxLength="40" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Categoria" Type="int" />
-          <Property Name="Precio_costo" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Precio_venta" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Ganancia" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Stock" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Precio_costo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Ganancia" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CATEGORIA_id" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -36,6 +45,18 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cantidad" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Estado_Productos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vn_Estado_Productos">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Estado" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <Association Name="FK__PRODUCTO__Catego__02FC7413">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -46,12 +67,13 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="PRODUCTO">
-              <PropertyRef Name="Categoria" />
+              <PropertyRef Name="CATEGORIA_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PRONTODBModelStoreContainer">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prioridad" EntityType="Self.Prioridad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vn_Categoria" EntityType="Self.Vn_Categoria" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -59,6 +81,13 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
     [Vn_Categoria].[Nombre] AS [Nombre], 
     [Vn_Categoria].[Cantidad] AS [Cantidad]
     FROM [dbo].[Vn_Categoria] AS [Vn_Categoria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vn_Estado_Productos" EntityType="Self.Vn_Estado_Productos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vn_Estado_Productos].[Id] AS [Id], 
+    [Vn_Estado_Productos].[Nombre] AS [Nombre], 
+    [Vn_Estado_Productos].[Estado] AS [Estado]
+    FROM [dbo].[Vn_Estado_Productos] AS [Vn_Estado_Productos]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__PRODUCTO__Catego__02FC7413" Association="Self.FK__PRODUCTO__Catego__02FC7413">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
@@ -77,6 +106,8 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <EntitySet Name="Prioridad" EntityType="PRONTODBModel.Prioridad" />
+          <EntitySet Name="Vn_Estado_Productos" EntityType="PRONTODBModel.Vn_Estado_Productos" />
         </EntityContainer>
         <EntityType Name="CATEGORIA">
           <Key>
@@ -114,54 +145,91 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
           </End>
           <End Type="PRONTODBModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
         </Association>
+        <EntityType Name="Prioridad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Cantidad_Minima" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Cantidad_Media" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vn_Estado_Productos">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Estado" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PRONTODBModelStoreContainer" CdmEntityContainer="PRONTODBEntities">
-          <EntitySetMapping Name="CATEGORIA">
-            <EntityTypeMapping TypeName="PRONTODBModel.CATEGORIA">
-              <MappingFragment StoreEntitySet="CATEGORIA">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCTO">
-            <EntityTypeMapping TypeName="PRONTODBModel.PRODUCTO">
-              <MappingFragment StoreEntitySet="PRODUCTO">
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Ganancia" ColumnName="Ganancia" />
-                <ScalarProperty Name="Precio_venta" ColumnName="Precio_venta" />
-                <ScalarProperty Name="Precio_costo" ColumnName="Precio_costo" />
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PRONTODBModelStoreContainer" CdmEntityContainer="PRONTODBEntities">
+    <EntitySetMapping Name="CATEGORIA">
+      <EntityTypeMapping TypeName="IsTypeOf(PRONTODBModel.CATEGORIA)">
+        <MappingFragment StoreEntitySet="CATEGORIA">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="IsTypeOf(PRONTODBModel.PRODUCTO)">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio_costo" ColumnName="Precio_costo" />
+          <ScalarProperty Name="Precio_venta" ColumnName="Precio_venta" />
+          <ScalarProperty Name="Ganancia" ColumnName="Ganancia" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vn_Categoria">
+      <EntityTypeMapping TypeName="IsTypeOf(PRONTODBModel.Vn_Categoria)">
+        <MappingFragment StoreEntitySet="Vn_Categoria">
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prioridad">
+      <EntityTypeMapping TypeName="IsTypeOf(PRONTODBModel.Prioridad)">
+        <MappingFragment StoreEntitySet="Prioridad">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cantidad_Minima" ColumnName="Cantidad_Minima" />
+          <ScalarProperty Name="Cantidad_Media" ColumnName="Cantidad_Media" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK__PRODUCTO__Catego__02FC7413" TypeName="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" StoreEntitySet="PRODUCTO">
+      <EndProperty Name="CATEGORIA">
+        <ScalarProperty Name="id" ColumnName="CATEGORIA_id" />
+      </EndProperty>
+      <EndProperty Name="PRODUCTO">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="CATEGORIA_id" IsNull="false" />
+    </AssociationSetMapping>
+          <EntitySetMapping Name="Vn_Estado_Productos">
+            <EntityTypeMapping TypeName="PRONTODBModel.Vn_Estado_Productos">
+              <MappingFragment StoreEntitySet="Vn_Estado_Productos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vn_Categoria">
-            <EntityTypeMapping TypeName="PRONTODBModel.Vn_Categoria">
-              <MappingFragment StoreEntitySet="Vn_Categoria">
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="FK__PRODUCTO__Catego__02FC7413" TypeName="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" StoreEntitySet="PRODUCTO">
-            <EndProperty Name="PRODUCTO">
-              <ScalarProperty Name="Id" ColumnName="Id" />
-            </EndProperty>
-            <EndProperty Name="CATEGORIA">
-              <ScalarProperty Name="id" ColumnName="Categoria" />
-            </EndProperty>
-            <Condition ColumnName="Categoria" IsNull="false" />
-          </AssociationSetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -175,7 +243,7 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
