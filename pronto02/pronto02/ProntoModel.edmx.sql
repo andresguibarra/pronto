@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/25/2015 17:46:51
--- Generated from EDMX file: C:\Users\Andres\Source\Repos\pronto2\pronto02\pronto02\ProntoModel.edmx
+-- Date Created: 07/25/2015 17:03:00
+-- Generated from EDMX file: C:\Users\Home\Source\Repos\pronto2\pronto02\pronto02\ProntoModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -34,8 +34,11 @@ GO
 IF OBJECT_ID(N'[dbo].[Vn_Categoria]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Vn_Categoria];
 GO
-IF OBJECT_ID(N'[dbo].[Prioridad]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Prioridad];
+IF OBJECT_ID(N'[dbo].[Proveedor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Proveedor];
+GO
+IF OBJECT_ID(N'[dbo].[Contacto]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Contacto];
 GO
 
 -- --------------------------------------------------
@@ -70,12 +73,23 @@ CREATE TABLE [dbo].[Vn_Categoria] (
 );
 GO
 
--- Creating table 'Prioridad'
-CREATE TABLE [dbo].[Prioridad] (
+-- Creating table 'Proveedor'
+CREATE TABLE [dbo].[Proveedor] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Nombre] nvarchar(max)  NOT NULL,
-    [Cantidad_Minima] nvarchar(max)  NOT NULL,
-    [Cantidad_Media] nvarchar(max)  NOT NULL
+    [Nombre] nvarchar(100)  NOT NULL,
+    [Direccion] nvarchar(50)  NOT NULL,
+    [Telefono] nvarchar(40)  NOT NULL,
+    [CUIT] nvarchar(50)  NULL,
+    [Razon_Social] nvarchar(50)  NULL
+);
+GO
+
+-- Creating table 'Contacto'
+CREATE TABLE [dbo].[Contacto] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Nombre] nvarchar(100)  NOT NULL,
+    [Direccion] nvarchar(40)  NOT NULL,
+    [Telefono] nvarchar(40)  NOT NULL
 );
 GO
 
@@ -101,9 +115,15 @@ ADD CONSTRAINT [PK_Vn_Categoria]
     PRIMARY KEY CLUSTERED ([Categoria], [Nombre] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Prioridad'
-ALTER TABLE [dbo].[Prioridad]
-ADD CONSTRAINT [PK_Prioridad]
+-- Creating primary key on [Id] in table 'Proveedor'
+ALTER TABLE [dbo].[Proveedor]
+ADD CONSTRAINT [PK_Proveedor]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Contacto'
+ALTER TABLE [dbo].[Contacto]
+ADD CONSTRAINT [PK_Contacto]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

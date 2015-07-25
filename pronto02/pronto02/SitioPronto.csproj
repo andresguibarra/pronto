@@ -293,6 +293,7 @@
     <Content Include="obj\Debug\pronto02.dll" />
     <Content Include="obj\Debug\pronto02.pdb" />
     <Content Include="ProntoModel.edmx.sql" />
+    <Content Include="Proveedores.aspx" />
     <Content Include="Scripts\alta.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -455,6 +456,9 @@
     <Compile Include="Consulta.aspx.designer.cs">
       <DependentUpon>Consulta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contacto.cs">
+      <DependentUpon>ProntoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -505,6 +509,16 @@
       <DependentUpon>ProntoModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor.cs">
+      <DependentUpon>ProntoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedores.aspx.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Proveedores.aspx.designer.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
