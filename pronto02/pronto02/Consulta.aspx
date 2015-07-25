@@ -13,7 +13,7 @@
                 <asp:TextBox ID="txtCodBarras" runat="server" ClientIDMode="Static" placeholder="Buscar por Código de barras" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-md-3">
-                <asp:TextBox ID="txtNombre" runat="server" placeholder="Buscar por Nombre" OnTextChanged="txtNombre_TextChanged" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtNombre" runat="server" ClientIDMode="Static" placeholder="Buscar por Nombre"  CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-md-3 ">
                 <div style="max-width: 280px;">
@@ -21,21 +21,27 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <asp:LinkButton ID="btnBuscar"  ClientIDMode="Static" runat="server" CssClass="btn btn-default btnBuscar" OnClick="btnBuscar_Click">Buscar</asp:LinkButton>
+                <asp:LinkButton ID="btnBuscar" ClientIDMode="Static" runat="server" CssClass="btn btn-default btnBuscar" OnClick="btnBuscar_Click">Buscar</asp:LinkButton>
             </div>
         </div>
+        <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AutoGenerateColumns="false">
+                    <Columns>
+                        <asp:BoundField HeaderText="Codigo de Barras" DataField="cod_barras" />
+                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                        <asp:BoundField HeaderText="Categoria" DataField="Categoria.nombre" />
+                        <asp:BoundField HeaderText="Costo" DataField="Precio_costo" />
+                        <asp:BoundField HeaderText="Precio Venta" DataField="Precio_venta" />
+                        <asp:BoundField HeaderText="Ganancia" DataField="Ganancia" />
+                        <asp:BoundField HeaderText="Stock" DataField="Stock" />
 
-        <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AutoGenerateColumns="false">
-            <Columns>
-                <asp:BoundField HeaderText="Codigo de Barras" DataField="cod_barras" />
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                <asp:BoundField HeaderText="Categoria" DataField="Categoria.nombre" />
-                <asp:BoundField HeaderText="Costo" DataField="Precio_costo" />
-                <asp:BoundField HeaderText="Precio Venta" DataField="Precio_venta" />
-                <asp:BoundField HeaderText="Ganancia" DataField="Ganancia" />
-                <asp:BoundField HeaderText="Stock" DataField="Stock" />
-
-            </Columns>
-        </asp:GridView>
+                    </Columns>
+                </asp:GridView>
+            </ContentTemplate>
+            <Triggers>
+                <asp:PostBackTrigger  ControlID="btnBuscar"/>
+            </Triggers>
+        </asp:UpdatePanel>
     </div>
 </asp:Content>

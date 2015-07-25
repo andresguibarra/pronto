@@ -285,6 +285,7 @@
     <Content Include="Consulta.aspx" />
     <Content Include="Estilos\alta.css" />
     <Content Include="Estilos\consulta.css" />
+    <Content Include="Estilos\docs.min.css" />
     <Content Include="Estilos\General.css" />
     <Content Include="Modificacion.aspx" />
     <Content Include="obj\Debug\pronto02.csproj.FileListAbsolute.txt" />

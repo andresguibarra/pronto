@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="pronto02._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="jumbotron">
+    <link href="Estilos/docs.min.css" rel="stylesheet" />
+    <%-- <div class="jumbotron">
         <h1>ASP.NET</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
         <p><a href="http://www.asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
@@ -37,6 +37,31 @@
                 <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
             </p>
         </div>
-    </div>
+    </div>--%>
 
+    <div class="contenedor">
+        <div class="bs-glyphicons">
+            <ul class="bs-glyphicons-list">
+
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon-class">Alta Producto</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        <span class="glyphicon-class">Consulta Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                        <span class="glyphicon-class">Categorias</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </asp:Content>

@@ -3,29 +3,77 @@
 }
 
 .navbar-inverse {
-  background-color: #5fb677;
-  border-color: #5fb677;
+    background-color: #5fb677;
+    border-color: #5fb677;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-  color: #e1ebc1;
-}
+    .navbar-inverse .navbar-nav > li > a {
+        color: #e1ebc1;
+    }
 
-.navbar-inverse .navbar-brand {
-    color: #e1ebc1;
-}
+    .navbar-inverse .navbar-brand {
+        color: #e1ebc1;
+    }
 
-#contenedor{
-    width:40em;
+#contenedor {
+    width: 40em;
     margin: 0 auto;
 }
-.contenedor{
+
+.contenedor {
     margin-top: 3em;
     width: 40em;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
 }
-.titulo{
+
+.titulo {
     color: #5fb677;
-      margin: 0 5em;
+    margin: 0 5em;
+}
+
+.bs-glyphicons li {
+    width: 25% !important;
+    border: none;
+    padding: 0;
+}
+
+.bs-glyphicons li:hover {
+  background-color: #3A9953 !important;
+}
+.bs-glyphicons li a {
+    /* font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    padding-right:.5em;
+
+    /**/
+    padding: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+ul a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.bs-glyphicons li a:hover {
+    /*background-color: yellow;*/
+    text-decoration: none;
+    color: white;
+}
+
+.bs-glyphicons li a:link {
+    text-decoration: none;
+    
+}
+
+.bs-glyphicons li a:visited {
+    text-decoration: none;
+}
+
+.bs-glyphicons li a:active {
+    text-decoration: none;
 }
