@@ -4,8 +4,6 @@
 
     <div class="contenedor">
         <asp:GridView ID="gvPrioridades" runat="server" DataKeyNames="Id" CssClass="table table-hover table-striped" Width="100%"
-            OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" EnableViewState="false"
-            OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating"
             AutoGenerateColumns="False">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
@@ -52,8 +50,6 @@
         <div class="">
 
              <asp:GridView ID="gvFaltantes" runat="server" DataKeyNames="Id" CssClass="table table-hover table-striped" Width="100%"
-            OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" EnableViewState="false"
-            OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating"
             AutoGenerateColumns="False">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
