@@ -287,6 +287,7 @@
     <Content Include="Estilos\consulta.css" />
     <Content Include="Estilos\docs.min.css" />
     <Content Include="Estilos\General.css" />
+    <Content Include="Faltantes.aspx" />
     <Content Include="Modificacion.aspx" />
     <Content Include="obj\Debug\pronto02.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\pronto02.dll" />
@@ -467,6 +468,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Faltantes.aspx.cs">
+      <DependentUpon>Faltantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Faltantes.aspx.designer.cs">
+      <DependentUpon>Faltantes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -482,6 +490,9 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Prioridad.cs">
+      <DependentUpon>ProntoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PRODUCTO.cs">
       <DependentUpon>ProntoModel.tt</DependentUpon>
     </Compile>
@@ -541,6 +552,9 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
     <Compile Include="Vn_Categoria.cs">
+      <DependentUpon>ProntoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vn_Estado_Productos.cs">
       <DependentUpon>ProntoModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
