@@ -21,6 +21,7 @@ namespace pronto02
         public decimal Precio_venta { get; set; }
         public decimal Ganancia { get; set; }
         public decimal Stock { get; set; }
+        public Nullable<decimal> Precio_Mayor { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }
     }

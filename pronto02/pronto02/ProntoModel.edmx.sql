@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/25/2015 17:03:00
+-- Date Created: 08/01/2015 15:00:39
 -- Generated from EDMX file: C:\Users\Home\Source\Repos\pronto2\pronto02\pronto02\ProntoModel.edmx
 -- --------------------------------------------------
 
@@ -61,6 +61,7 @@ CREATE TABLE [dbo].[PRODUCTO] (
     [Precio_venta] decimal(10,2)  NOT NULL,
     [Ganancia] decimal(10,2)  NOT NULL,
     [Stock] decimal(10,0)  NOT NULL,
+    [Precio_Mayor] decimal(18,0)  NULL,
     [CATEGORIA_id] int  NULL
 );
 GO
