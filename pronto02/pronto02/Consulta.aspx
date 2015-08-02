@@ -35,7 +35,7 @@
                         <asp:BoundField HeaderText="Precio Venta" DataField="Precio_venta" />
                         <asp:BoundField HeaderText="Ganancia" DataField="Ganancia" />
                         <asp:BoundField HeaderText="Stock" DataField="Stock" />
-
+                        <asp:BoundField HeaderText="Precio por Mayor" DataField="Precio_Mayor" />
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>

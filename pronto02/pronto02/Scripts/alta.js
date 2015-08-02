@@ -12,6 +12,7 @@ function establecerCamposNumericos() {
     $("#txtPorcentaje").numeric();
     $("#txtPrecioCosto").numeric({ decimalPlaces: 2 });
     $("#txtPrecioVenta").numeric({ decimalPlaces: 2 });
+    $("#txtPrecioMayor").numeric({ decimalPlaces: 2 });
 }
 $(document).ready(function () {
     establecerCamposNumericos();//Establezco que campos van a ser numericos

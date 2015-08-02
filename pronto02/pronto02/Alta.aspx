@@ -93,7 +93,17 @@
 
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label7" runat="server" Text="Precio por Mayor"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtPrecioMayor" class="form-control" ClientIDMode="Static" runat="server"></asp:TextBox>
+                </td>
+                <td>
 
+                </td>
+            </tr>
 
         </table>
         

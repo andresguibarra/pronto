@@ -60,6 +60,7 @@ namespace pronto02
                 decimal precioCosto;
                 decimal ganancia;
                 decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
+                decimal precioMayor;
                 if (String.IsNullOrEmpty(this.txtPrecioCosto.Text))
                 {
                     precioCosto = 0;
@@ -70,13 +71,18 @@ namespace pronto02
                     precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
                     ganancia = precioVenta - precioCosto;
                 }
-                var producto = new PRODUCTO { cod_barras = this.txtCodigoDeBarras.Text, Nombre = nombreProducto, Stock = 1, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia };
+                if (String.IsNullOrEmpty(this.txtPrecioMayor.Text ))
+                {
+                    precioMayor = decimal.MinValue;
+                }
+                else
+                {
+                    precioMayor = decimal.Parse(this.txtPrecioMayor.Text);
+                }
+                var producto = new PRODUCTO { cod_barras = this.txtCodigoDeBarras.Text, Nombre = nombreProducto, Stock = 1, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia, Precio_Mayor = precioMayor };
                 db.PRODUCTO.Add(producto);
                 db.SaveChanges();
-                this.txtCodigoDeBarras.Text = string.Empty;
-                this.txtNombreProducto.Text = string.Empty;
-                this.txtPrecioCosto.Text = string.Empty;
-                this.txtPrecioVenta.Text = string.Empty;
+                vaciarCampos();
             }
             catch (FormatException)
             {
@@ -89,6 +95,14 @@ namespace pronto02
 
             }
 
+        }
+        private void vaciarCampos() {
+
+            this.txtCodigoDeBarras.Text = string.Empty;
+            this.txtNombreProducto.Text = string.Empty;
+            this.txtPrecioCosto.Text = string.Empty;
+            this.txtPrecioVenta.Text = string.Empty;
+            this.txtPrecioMayor.Text = string.Empty;
         }
         private void cargarComboCategoria()
         {
