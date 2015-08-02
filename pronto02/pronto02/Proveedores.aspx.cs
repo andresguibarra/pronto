@@ -9,7 +9,7 @@ namespace pronto02
 {
     public partial class Proveedores : System.Web.UI.Page
     {
-        PRONTODBEntities dbo = new PRONTODBEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarProveedores();
@@ -17,15 +17,21 @@ namespace pronto02
 
         private void CargarProveedores()
         {
-            List<Proveedor> lista = dbo.Proveedor.ToList();
-            foreach (Proveedor p in lista)
+
+            using (PRONTODBEntities dbo = new PRONTODBEntities())
             {
-                CrearPanel(p.Nombre, p.Direccion, p.Telefono);
+                List<Proveedor> lista = dbo.Proveedor.ToList();
+                foreach (Proveedor p in lista)
+                {
+                    CrearPanel(p.Nombre, p.Direccion, p.Telefono);
+                }
             }
+
         }
 
         private void CrearPanel(String nombre, String direccion, String telefono)
         {
+            System.Web.UI.HtmlControls.HtmlGenericControl div_content = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             System.Web.UI.HtmlControls.HtmlGenericControl div_panel = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             System.Web.UI.HtmlControls.HtmlGenericControl div_heading = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             System.Web.UI.HtmlControls.HtmlGenericControl h3 = new System.Web.UI.HtmlControls.HtmlGenericControl("h3");
@@ -34,8 +40,13 @@ namespace pronto02
             System.Web.UI.HtmlControls.HtmlGenericControl label_tel = new System.Web.UI.HtmlControls.HtmlGenericControl("span");
             System.Web.UI.HtmlControls.HtmlGenericControl label_dir = new System.Web.UI.HtmlControls.HtmlGenericControl("span");
             System.Web.UI.HtmlControls.HtmlGenericControl boton_borrar = new System.Web.UI.HtmlControls.HtmlGenericControl("button");
-
-            boton_borrar.Attributes.Add("ID", "btBorrar");
+            System.Web.UI.HtmlControls.HtmlGenericControl span_icon_tel = new System.Web.UI.HtmlControls.HtmlGenericControl("span");
+            System.Web.UI.HtmlControls.HtmlGenericControl span_icon_dir = new System.Web.UI.HtmlControls.HtmlGenericControl("span");
+            System.Web.UI.HtmlControls.HtmlGenericControl div_row1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            System.Web.UI.HtmlControls.HtmlGenericControl div_row2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            System.Web.UI.HtmlControls.HtmlGenericControl div_content1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            System.Web.UI.HtmlControls.HtmlGenericControl div_content2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            boton_borrar.Attributes.Add("ID", "btnBorrar");
             boton_borrar.InnerText = "Eliminar";
             boton_borrar.Visible = false;
 
@@ -49,35 +60,61 @@ namespace pronto02
             div_heading.Controls.Add(h3);
 
             label_tel.Attributes.Add("ID", "lblTelefono");
+            span_icon_tel.Attributes.Add("class", " glyphicon glyphicon-earphone");
+
             label_tel.InnerText = telefono;
 
             label_dir.Attributes.Add("ID", "lblDireccion");
+            span_icon_dir.Attributes.Add("class", " glyphicon glyphicon-home");
             label_dir.InnerText = direccion;
-
+            
+            
             div_body.Attributes.Add("Class", "panel-body");
-            div_body.Controls.Add(label_dir);
-            div_body.Controls.Add(label_tel);
 
-            div_panel.Attributes.Add("Class", "panel panel-default");
+            div_row1.Attributes.Add("class", "row");
+            div_content1.Attributes.Add("class", "col-md-12");
+            div_content1.Controls.Add(span_icon_tel);
+            div_content1.Controls.Add(label_tel);
+
+
+            div_row1.Controls.Add(div_content1);
+
+            div_row2.Attributes.Add("class", "row");
+            div_content2.Attributes.Add("class", "col-md-12");
+            div_content2.Controls.Add(span_icon_dir);
+            div_content2.Controls.Add(label_dir);
+            div_row2.Controls.Add(div_content2);
+
+            div_body.Controls.Add(div_row2);
+            div_body.Controls.Add(div_row1);
+
+            div_panel.Attributes.Add("Class", "panel panel-default panel-contacto");
             div_panel.Controls.Add(div_heading);
             div_panel.Controls.Add(div_body);
             div_panel.Controls.Add(boton_borrar);
 
-            contenedorpaneles.Controls.Add(div_panel);
+
+            div_content.Attributes.Add("class", "col-md-4");
+            div_content.Controls.Add(div_panel);
+            contenedorpaneles.Controls.Add(div_content);
         }
 
         protected void btAgregar_Click(object sender, EventArgs e)
         {
-            Proveedor p = new Proveedor();
-            p.Nombre = txtNombre.Text;
-            p.Direccion = txtDireccion.Text;
-            p.Telefono = txtTelefono.Text;
-            p.CUIT = String.Empty;
-            p.Razon_Social = String.Empty;
+            using (PRONTODBEntities dbo = new PRONTODBEntities())
+            {
+                Proveedor p = new Proveedor();
+                p.Nombre = txtNombre.Text;
+                p.Direccion = txtDireccion.Text;
+                p.Telefono = txtTelefono.Text;
+                p.CUIT = String.Empty;
+                p.Razon_Social = String.Empty;
 
-            dbo.Proveedor.Add(p);
-            dbo.SaveChanges();
-            Response.Redirect(Request.Url.AbsoluteUri);          
+                dbo.Proveedor.Add(p);
+                dbo.SaveChanges();
+            }
+
+            Response.Redirect(Request.Url.AbsoluteUri);
         }
 
 

@@ -1,0 +1,51 @@
+﻿.panel-agregar {
+    max-width: 23em;
+}
+
+    .panel-agregar .panel-heading {
+        padding-right: 30px;
+    }
+
+    .panel-agregar .panel-body {
+        padding-top: 0px;
+        padding-right: 30px;
+    }
+
+.panel-body .row {
+    margin-top: 1em;
+}
+
+
+.sub-titulo {
+    margin-left: 1em;
+    font-size: 1.2em;
+}
+
+.icono {
+    transform: translate(100%,40%);
+}
+
+
+.panel-contacto{
+    max-width: 23em;
+}
+
+.panel-contacto .panel-body{
+    padding-top:0;
+
+}
+
+#lblDireccion {
+margin-left:2em;
+}
+#lblTelefono {
+    margin-left:2em;
+
+}
+
+.contenedor-proveedores {
+    margin-top:3em;
+    margin-left: auto;
+    margin-right: auto;
+
+}
