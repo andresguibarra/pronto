@@ -29,6 +29,12 @@ namespace pronto02
         {
             GridView1.DataSource = listaVentas;
             GridView1.DataBind();
+            float total = 0;
+            foreach (Linea_Venta lv in listaVentas)
+            {
+                total += lv.Subtotal;
+            }
+            txtTotal.Text = total.ToString();
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -68,6 +74,26 @@ namespace pronto02
                     txtUnidades.Text = "1";
                 btnAgregar_Click(this, e);
             }
+        }
+
+        protected void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            foreach (Linea_Venta lv in listaVentas)
+            {
+                var consulta = from p in db.PRODUCTO
+                               where p.Nombre == lv.Nombre_Producto
+                               select p;
+                if (consulta.ToList().Count > 0)
+                {
+                    PRODUCTO p = consulta.ToList().First();
+                    p.Stock -= lv.Unidades;
+                    if (p.Stock <= 0)
+                        p.Stock = 0;
+                }
+            }
+            var venta = new VENTAS { FechayHora = System.DateTime.Now, ImporteTotal = double.Parse(txtTotal.Text) };
+            db.VENTAS.Add(venta);
+            db.SaveChanges();
         }
 
     }

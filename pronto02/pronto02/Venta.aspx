@@ -63,5 +63,10 @@
                 <asp:TextBox ID="txtTotal" CssClass="form-control" Style="margin-left: 5em;" runat="server" Enabled="False" ClientIDMode="Static"></asp:TextBox>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-1">
+                <asp:LinkButton ID="LinkButtonFin" class="btnAgregar btn btn-default" runat="server" ClientIDMode="Static" Text="Finalizar Venta" OnClick="btnFinalizar_Click" />
+            </div>
+        </div>
     </div>
 </asp:Content>

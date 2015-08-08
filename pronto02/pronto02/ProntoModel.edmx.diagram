@@ -11,6 +11,7 @@
         <AssociationConnector Association="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" />
         <EntityTypeShape EntityType="PRONTODBModel.Proveedor" Width="1.5" PointX="7.5" PointY="2.875" />
         <EntityTypeShape EntityType="PRONTODBModel.Contacto" Width="1.5" PointX="10.375" PointY="3" />
+        <EntityTypeShape EntityType="PRONTODBModel.VENTAS" Width="1.5" PointX="6.5" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

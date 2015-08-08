@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/01/2015 15:00:39
--- Generated from EDMX file: C:\Users\Home\Source\Repos\pronto2\pronto02\pronto02\ProntoModel.edmx
+-- Date Created: 08/08/2015 16:14:15
+-- Generated from EDMX file: C:\Users\alumno\Source\Repos\pronto\pronto02\pronto02\ProntoModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -28,17 +28,20 @@ GO
 IF OBJECT_ID(N'[dbo].[CATEGORIA]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CATEGORIA];
 GO
+IF OBJECT_ID(N'[dbo].[Contacto]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Contacto];
+GO
 IF OBJECT_ID(N'[dbo].[PRODUCTO]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PRODUCTO];
-GO
-IF OBJECT_ID(N'[dbo].[Vn_Categoria]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Vn_Categoria];
 GO
 IF OBJECT_ID(N'[dbo].[Proveedor]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Proveedor];
 GO
-IF OBJECT_ID(N'[dbo].[Contacto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Contacto];
+IF OBJECT_ID(N'[dbo].[VENTAS]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[VENTAS];
+GO
+IF OBJECT_ID(N'[PRONTODBModelStoreContainer].[Vn_Categoria]', 'U') IS NOT NULL
+    DROP TABLE [PRONTODBModelStoreContainer].[Vn_Categoria];
 GO
 
 -- --------------------------------------------------
@@ -61,7 +64,8 @@ CREATE TABLE [dbo].[PRODUCTO] (
     [Precio_venta] decimal(10,2)  NOT NULL,
     [Ganancia] decimal(10,2)  NOT NULL,
     [Stock] decimal(10,0)  NOT NULL,
-    [Precio_Mayor] decimal(18,0)  NULL,
+    [Precio_Mayor] decimal(10,2)  NULL,
+    [IdPrioridad] nvarchar(max)  NULL,
     [CATEGORIA_id] int  NULL
 );
 GO
@@ -91,6 +95,14 @@ CREATE TABLE [dbo].[Contacto] (
     [Nombre] nvarchar(100)  NOT NULL,
     [Direccion] nvarchar(40)  NOT NULL,
     [Telefono] nvarchar(40)  NOT NULL
+);
+GO
+
+-- Creating table 'VENTAS'
+CREATE TABLE [dbo].[VENTAS] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FechayHora] datetime  NOT NULL,
+    [ImporteTotal] float  NOT NULL
 );
 GO
 
@@ -125,6 +137,12 @@ GO
 -- Creating primary key on [Id] in table 'Contacto'
 ALTER TABLE [dbo].[Contacto]
 ADD CONSTRAINT [PK_Contacto]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'VENTAS'
+ALTER TABLE [dbo].[VENTAS]
+ADD CONSTRAINT [PK_VENTAS]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

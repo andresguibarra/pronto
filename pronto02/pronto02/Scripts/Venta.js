@@ -13,11 +13,11 @@ $(document).ready(function () {
     });
 
     //function calcularTotal() {
-        var gridview = document.getElementById("GridView1");
-        var total = 0;
-        for (var i = 1, row; row = gridview.rows[i]; i++)
-            total += parseFloat(row.cells[4].innerText);
-        var txt = document.getElementById("txtTotal");
-        txt.value = total;
+    //    var gridview = document.getElementById("GridView1");
+    //    var total = 0;
+    //    for (var i = 1, row; row = gridview.rows[i]; i++)
+    //        total += parseFloat(row.cells[4].innerText);
+    //    var txt = document.getElementById("txtTotal");
+    //    txt.value = total;
     //}
 });
