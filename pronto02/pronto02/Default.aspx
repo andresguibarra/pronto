@@ -73,6 +73,13 @@
                         <span class="glyphicon-class">Venta</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/ActualizarStock">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <span class="glyphicon-class">Actualizar Stock</span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>
