@@ -291,6 +291,7 @@
     <Content Include="Estilos\venta.css" />
     <Content Include="Faltantes.aspx" />
     <Content Include="Modificacion.aspx" />
+    <Content Include="ModificarProducto.aspx" />
     <Content Include="obj\Debug\pronto02.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\pronto02.dll" />
     <Content Include="obj\Debug\pronto02.pdb" />
@@ -345,6 +346,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.numeric.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ModificarProducto.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Venta.js" />
@@ -488,6 +490,13 @@
     </Compile>
     <Compile Include="Modificacion.aspx.designer.cs">
       <DependentUpon>Modificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarProducto.aspx.cs">
+      <DependentUpon>ModificarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarProducto.aspx.designer.cs">
+      <DependentUpon>ModificarProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
