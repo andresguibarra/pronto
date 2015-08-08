@@ -30,5 +30,6 @@ namespace pronto02
         public virtual DbSet<Vn_Categoria> Vn_Categoria { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
         public virtual DbSet<Contacto> Contacto { get; set; }
+        public virtual DbSet<VENTAS> VENTAS { get; set; }
     }
 }
