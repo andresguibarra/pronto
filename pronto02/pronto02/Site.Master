@@ -56,6 +56,7 @@
                         <li><a runat="server" href="~/Alta">Alta Productos</a></li>
                         <li><a runat="server" href="~/Categoria">Categorias</a></li>
                         <li><a runat="server" href="~/Consulta">Consulta</a></li>
+                        <li><a runat="server" href="~/Venta">Venta</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>

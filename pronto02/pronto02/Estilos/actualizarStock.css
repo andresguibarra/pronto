@@ -1,0 +1,23 @@
+﻿.contenedor-actualizar {
+
+    margin-left: 10em;
+    margin-right: auto;
+    margin-top: 3em;
+}
+
+    .contenedor-actualizar .row {
+    
+    
+        margin-bottom:3em;
+    }
+
+.txtStock{
+    margin:0;
+width:3em;
+display:inline;
+}
+
+.id {
+
+    display: none;
+}

@@ -283,6 +283,7 @@
     <Content Include="BootstrapSelect\test.html" />
     <Content Include="Categoria.aspx" />
     <Content Include="Consulta.aspx" />
+    <Content Include="Estilos\actualizarStock.css" />
     <Content Include="Estilos\alta.css" />
     <Content Include="Estilos\consulta.css" />
     <Content Include="Estilos\docs.min.css" />
@@ -296,6 +297,7 @@
     <Content Include="obj\Debug\pronto02.pdb" />
     <Content Include="ProntoModel.edmx.sql" />
     <Content Include="Proveedores.aspx" />
+    <Content Include="Scripts\actualizarStock.js" />
     <Content Include="Scripts\alta.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
