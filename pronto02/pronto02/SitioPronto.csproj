@@ -288,6 +288,7 @@
     <Content Include="Estilos\docs.min.css" />
     <Content Include="Estilos\General.css" />
     <Content Include="Estilos\proveedores.css" />
+    <Content Include="Estilos\venta.css" />
     <Content Include="Faltantes.aspx" />
     <Content Include="Modificacion.aspx" />
     <Content Include="obj\Debug\pronto02.csproj.FileListAbsolute.txt" />

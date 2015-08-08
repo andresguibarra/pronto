@@ -44,21 +44,33 @@
             <ul class="bs-glyphicons-list">
 
                 <li>
-                    <a href="#">
+                    <a href="/Alta">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <span class="glyphicon-class">Alta Producto</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/Consulta">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         <span class="glyphicon-class">Consulta Productos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/Categoria">
                         <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                         <span class="glyphicon-class">Categorias</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Proveedores">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span class="glyphicon-class">Contactos y Proveedores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Venta">
+                        <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                        <span class="glyphicon-class">Venta</span>
                     </a>
                 </li>
             </ul>

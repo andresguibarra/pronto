@@ -14,11 +14,11 @@ namespace pronto02
         {
             get
             {
-               if(HttpContext.Current.Session["listaVentas"] == null)
-               {
-                   HttpContext.Current.Session["listaVentas"] = new List<Linea_Venta>();
-               }
-               return (List<Linea_Venta>)HttpContext.Current.Session["listaVentas"];
+                if (HttpContext.Current.Session["listaVentas"] == null)
+                {
+                    HttpContext.Current.Session["listaVentas"] = new List<Linea_Venta>();
+                }
+                return (List<Linea_Venta>)HttpContext.Current.Session["listaVentas"];
             }
             set
             {
@@ -31,13 +31,17 @@ namespace pronto02
             GridView1.DataBind();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnAgregar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
-            int unidades;
+            int unidades = int.Parse(txtUnidades.Text == "" ? "1" : txtUnidades.Text);
             float precio;
-            if (int.TryParse(txtUnidades.Text, out unidades) && float.TryParse(txtPrecio.Text.Replace(',','.'), out precio))
+            if (float.TryParse(txtPrecio.Text.Replace(',', '.'), out precio))
             {
+                if (String.IsNullOrEmpty(nombre))
+                {
+                    nombre = "Varios";
+                }
                 Linea_Venta lv = new Linea_Venta(nombre, unidades, precio);
                 listaVentas.Add(lv);
             }
@@ -46,8 +50,8 @@ namespace pronto02
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-                listaVentas.RemoveAt(e.RowIndex);
-                Response.Redirect(Request.Url.AbsoluteUri);
+            listaVentas.RemoveAt(e.RowIndex);
+            Response.Redirect(Request.Url.AbsoluteUri);
         }
 
         protected void btBuscar_Click(object sender, EventArgs e)
@@ -60,10 +64,11 @@ namespace pronto02
                 PRODUCTO pr = consulta.First();
                 txtNombre.Text = pr.Nombre;
                 txtPrecio.Text = pr.Precio_venta.ToString();
-                if(String.IsNullOrEmpty(txtUnidades.Text))
+                if (String.IsNullOrEmpty(txtUnidades.Text))
                     txtUnidades.Text = "1";
-                Button1_Click(this, e);
+                btnAgregar_Click(this, e);
             }
         }
+
     }
 }
