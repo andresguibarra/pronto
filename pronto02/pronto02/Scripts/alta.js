@@ -36,5 +36,19 @@ $(document).ready(function () {
     $("#txtNombreProducto").keyup(function () {
         this.value = this.value.toUpperCase();
     });
+    validarCategoria();
+    $("select").change(function () {
+        validarCategoria();
+    });
 
 });
+
+function validarCategoria() {
+    var condicion = !(($("select").val().toLowerCase()).indexOf("medicamentos") > -1) || !(($("select").val().toLowerCase()).indexOf("medicamento") > -1);
+    if (condicion) {
+        $("table tbody tr:last-child").css({ display: "none" });
+    }
+    else {
+        $("table tbody tr:last-child").css({ display: "" });
+    }
+}

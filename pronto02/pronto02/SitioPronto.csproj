@@ -288,9 +288,11 @@
     <Content Include="Estilos\consulta.css" />
     <Content Include="Estilos\docs.min.css" />
     <Content Include="Estilos\General.css" />
+    <Content Include="Estilos\medicamentos.css" />
     <Content Include="Estilos\proveedores.css" />
     <Content Include="Estilos\venta.css" />
     <Content Include="Faltantes.aspx" />
+    <Content Include="Medicamentos.aspx" />
     <Content Include="Modificacion.aspx" />
     <Content Include="obj\Debug\pronto02.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\pronto02.dll" />
@@ -346,6 +348,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.numeric.js" />
+    <Content Include="Scripts\medicamentos.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -483,6 +486,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Linea_Venta.cs" />
+    <Compile Include="Medicamentos.aspx.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.designer.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Modificacion.aspx.cs">
       <DependentUpon>Modificacion.aspx</DependentUpon>

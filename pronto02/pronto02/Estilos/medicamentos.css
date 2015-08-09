@@ -1,0 +1,11 @@
+﻿
+
+.contenedor-medicamentos {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+}
+
+    .contenedor-medicamentos .row {
+    margin-bottom: 3em;
+    }

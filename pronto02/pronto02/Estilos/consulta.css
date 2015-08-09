@@ -7,3 +7,7 @@
     .contenedor-consulta .row {
         margin-bottom: 3em;
     }
+
+.id {
+    display:none;
+}

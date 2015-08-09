@@ -5,11 +5,26 @@
     <link href="Estilos/venta.css" rel="stylesheet" />
     <div class="contenedor-venta">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <asp:TextBox ID="txtCodigoBarras" AutoComplete="off" CssClass="form-control" placeholder="Código de Barras" runat="server" ClientIDMode="Static"></asp:TextBox>
             </div>
-            <div class="col-md-3">
-                <asp:TextBox ID="txtNombre" AutoComplete="off" CssClass="form-control" placeholder="Nombre de Producto" runat="server"></asp:TextBox>
+            <div class="col-md-4">
+
+                <div class="input-group campoCalcular">
+                    <asp:TextBox ID="txtNombre" ClientIDMode="Static" AutoComplete="off" CssClass="form-control" placeholder="Nombre de Producto" runat="server"></asp:TextBox>
+                    <span class="input-group-btn">
+                        <asp:LinkButton ID="btnBuscarMedicamentos" class="btnBuscarMedicamentos btn btn-default" runat="server" ClientIDMode="Static" Text="Medicamentos" OnClick="btnBuscarMedicamentos_Click" />
+                    </span>
+                </div>
+
+                <%--    <div class="row">
+                    <div class="col-md-7">
+                        <asp:TextBox ID="txtNombre" ClientIDMode="Static" AutoComplete="off" CssClass="form-control" placeholder="Nombre de Producto" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:LinkButton ID="btnBuscarMedicamentos" class="btnBuscarMedicamentos btn btn-default" runat="server" ClientIDMode="Static" Text="Medicamentos" OnClick="btnBuscarMedicamentos_Click" />
+                    </div>
+                </div>--%>
             </div>
             <div class="col-md-1">
                 <span class="subtitulo">Unidades</span>
@@ -17,13 +32,17 @@
             </div>
             <div class="col-md-1">
                 <span class="subtitulo">Precio </span>
-                <asp:TextBox ID="txtPrecio" AutoComplete="off" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtPrecio" AutoComplete="off" ClientIDMode="Static" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
             <div class="col-md-1">
                 <asp:LinkButton ID="btnAgregar" class="btnAgregar btn btn-default" runat="server" ClientIDMode="Static" Text="Agregar" OnClick="btnAgregar_Click" />
             </div>
             <asp:LinkButton ID="btnBuscar" class="btnBuscar" runat="server" OnClick="btBuscar_Click" Style="display: none">Buscar</asp:LinkButton>
         </div>
+        <%--<div class="row">
+            <div class="col-md-1 col-md-offset-3">
+            </div>
+        </div>--%>
         <div class="row">
             <div class="col-md-9">
                 <asp:GridView ID="GridView1" CssClass="table table-hover table-striped grilla" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" ClientIDMode="Static">
@@ -59,7 +78,7 @@
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-6">
-                <span style="position: absolute; transform:translateY(30%); font-weight:700">Total</span>
+                <span style="position: absolute; transform: translateY(30%); font-weight: 700">Total</span>
                 <asp:TextBox ID="txtTotal" CssClass="form-control" Style="margin-left: 5em;" runat="server" Enabled="False" ClientIDMode="Static"></asp:TextBox>
             </div>
         </div>

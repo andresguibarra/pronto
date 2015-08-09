@@ -94,6 +94,16 @@ namespace pronto02
             var venta = new VENTAS { FechayHora = System.DateTime.Now, ImporteTotal = double.Parse(txtTotal.Text) };
             db.VENTAS.Add(venta);
             db.SaveChanges();
+
+            listaVentas.Clear();//Vacio grilla
+            Response.Redirect(Request.Url.AbsoluteUri);
+        }
+
+        protected void btnBuscarMedicamentos_Click(object sender, EventArgs e)
+        {
+            string queryString = "Medicamentos.aspx";
+            string newWin = "window.open('" + queryString + "');";
+            ClientScript.RegisterStartupScript(this.GetType(), "pop", newWin, true);
         }
 
     }

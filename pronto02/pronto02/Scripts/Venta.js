@@ -21,3 +21,7 @@ $(document).ready(function () {
     //    txt.value = total;
     //}
 });
+
+function HandlePopupResult(result) {
+    alert("result of popup is: " + result);
+}

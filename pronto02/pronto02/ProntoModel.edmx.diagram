@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b76e91645a2e4c6da67e512c6b582ff6" Name="Diagram1">
-        <EntityTypeShape EntityType="PRONTODBModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="PRONTODBModel.CATEGORIA" Width="1.75" PointX="0.75" PointY="1.375" />
         <EntityTypeShape EntityType="PRONTODBModel.PRODUCTO" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="PRONTODBModel.Vn_Categoria" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" />

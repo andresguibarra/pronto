@@ -13,7 +13,7 @@
                 <asp:TextBox ID="txtCodBarras" runat="server" ClientIDMode="Static" placeholder="Buscar por Código de barras" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-md-3">
-                <asp:TextBox ID="txtNombre" runat="server" ClientIDMode="Static" placeholder="Buscar por Nombre"  CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtNombre" runat="server" ClientIDMode="Static" placeholder="Buscar por Nombre" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-md-3 ">
                 <div style="max-width: 280px;">
@@ -36,11 +36,19 @@
                         <asp:BoundField HeaderText="Ganancia" DataField="Ganancia" />
                         <asp:BoundField HeaderText="Stock" DataField="Stock" />
                         <asp:BoundField HeaderText="Precio por Mayor" DataField="Precio_Mayor" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnModificar" runat="server" Text="Modificar" OnClientClick="modificar(this);"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:BoundField ItemStyle-CssClass="id" HeaderStyle-CssClass="id" DataField="Id" />
+
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>
             <Triggers>
-                <asp:PostBackTrigger  ControlID="btnBuscar"/>
+                <asp:PostBackTrigger ControlID="btnBuscar" />
             </Triggers>
         </asp:UpdatePanel>
     </div>

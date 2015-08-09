@@ -24,6 +24,13 @@
         }
 
     });
+
 });
 
+function modificar(boton) {
+    var listaTD = boton.parentElement.parentElement.children;
+    var id = listaTD[listaTD.length - 1].innerText;
+
+    window.location.href = "/ModificarProducto.aspx?id=" + id;
+}
 

@@ -73,7 +73,7 @@ namespace pronto02
                 }
                 if (String.IsNullOrEmpty(this.txtPrecioMayor.Text ))
                 {
-                    precioMayor = decimal.MinValue;
+                    precioMayor = 0M;
                 }
                 else
                 {

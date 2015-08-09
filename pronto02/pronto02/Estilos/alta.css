@@ -34,3 +34,8 @@ td{
     color: #5fb677;
       margin: 0 5em;
 }
+/*
+tr:last-child {
+display:none;
+
+}*/
