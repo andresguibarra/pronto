@@ -28,6 +28,11 @@
             <ContentTemplate>
                 <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AutoGenerateColumns="false">
                     <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnModificar" runat="server" Text="Modificar" OnClientClick="modificar(this); return false;"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField HeaderText="Codigo de Barras" DataField="cod_barras" />
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                         <asp:BoundField HeaderText="Categoria" DataField="Categoria.nombre" />
@@ -36,11 +41,6 @@
                         <asp:BoundField HeaderText="Ganancia" DataField="Ganancia" />
                         <asp:BoundField HeaderText="Stock" DataField="Stock" />
                         <asp:BoundField HeaderText="Precio por Mayor" DataField="Precio_Mayor" />
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnModificar" runat="server" Text="Modificar" OnClientClick="modificar(this);"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
 
                         <asp:BoundField ItemStyle-CssClass="id" HeaderStyle-CssClass="id" DataField="Id" />
 
