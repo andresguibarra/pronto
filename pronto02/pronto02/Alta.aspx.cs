@@ -47,7 +47,6 @@ namespace pronto02
             if (!this.IsPostBack)
             {
                 cargarComboCategoria();
-
             }
         }
 
