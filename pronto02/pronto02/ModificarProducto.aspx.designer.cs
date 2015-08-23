@@ -67,6 +67,15 @@ namespace pronto02 {
         protected global::System.Web.UI.WebControls.Label lbStock;
         
         /// <summary>
+        /// Control btnArriba.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnArriba;
+        
+        /// <summary>
         /// Control txtStock.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,24 @@ namespace pronto02 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStock;
+        
+        /// <summary>
+        /// Control btnAbajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAbajo;
+        
+        /// <summary>
+        /// Control lbModificarCampos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbModificarCampos;
         
         /// <summary>
         /// Control lbNombre.

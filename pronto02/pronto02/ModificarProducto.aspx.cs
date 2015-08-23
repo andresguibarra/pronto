@@ -151,5 +151,15 @@ namespace pronto02
             txtVenta.Text = null;
             txtMayor.Text = null;
         }
+
+        protected void btnArriba_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void modificarSi_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

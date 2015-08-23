@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ModificarProducto.aspx.cs" Inherits="pronto02.ModificarProducto" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="Scripts/ModificarProducto.js"></script>
-    <script src="Scripts/jquery.numeric.js"></script>
-    <link href="Estilos/alta.css" rel="stylesheet" />
-    <link href="BootstrapSelect/dist/css/bootstrap-select.css" rel="stylesheet" />
-    <script src="BootstrapSelect/dist/js/bootstrap-select.js"></script>
-    <div id="contenedor">
+     <link href="Estilos/actualizarStock.css" rel="stylesheet" />
+    
+
+    <script src="Scripts/ModificarProducto.js"></script><script src="Scripts/jquery.numeric.js"></script><link href="Estilos/alta.css" rel="stylesheet" /><link href="BootstrapSelect/dist/css/bootstrap-select.css" rel="stylesheet" /><script src="BootstrapSelect/dist/js/bootstrap-select.js"></script><div id="contenedor">
         <h1><asp:Label ID="lbTitulo" class="Titulo" runat="server" Text="Modificar Producto"></asp:Label></h1>
         <table>
             <tr>
@@ -29,15 +28,33 @@
                     <asp:Label ID="lbStock" runat="server" Text="Stock"></asp:Label>
                 </td>
                 <td>
-                     <asp:TextBox ID="txtStock" ClientIDMode="Static" class="form-control" runat="server" Enabled="false"></asp:TextBox>
+                      
+                                <asp:LinkButton ID="btnArriba" CssClass="btn btn-default" onClientClick = "incrementarStock(); return false;" ClientIDMode="Static" runat="server"><span class="glyphicon glyphicon-arrow-up"></span></asp:LinkButton>
+                                <asp:TextBox ID="txtStock" CssClass="form-control txtStock" ClientIDMode="Static"  runat="server"></asp:TextBox>
+                                <asp:LinkButton ID="btnAbajo" CssClass="btn btn-default" onClientClick = "disminuirStock(); return false;" ClientIDMode="Static" runat="server"><span class="glyphicon glyphicon-arrow-down"></span></asp:LinkButton>
+                       
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="lbModificarCampos" runat="server" Text="Modificar Campos"></asp:Label>
+                </td>
+                <td>
+
+                    <label class="radio-inline"><input id="modificarSi" type="radio" name="sam1">Si</label>
+                    <label class="radio-inline"><input id="modificarNo" type="radio" name="sam1">No</label>
+<%--<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>--%>
+                    <%--<asp:RadioButton name="sam1" ID="modificarSi" ClientIDMode="Static" OnClientClick="modificarDatos();" runat="server" Text="Si" />--%>
+                    <%--<asp:RadioButton ID="modificarNo" runat="server" Text="No"/>--%>
+                </td>
+            </tr>
+            <div ID="modificarCamposDiv" >
             <tr>
                 <td>
                     <asp:Label ID="lbNombre" runat="server" Text="Nombre"></asp:Label>
                 </td>
                 <td>
-                     <asp:TextBox ID="txtNombre" ClientIDMode="Static" class="form-control" runat="server" Enabled="true"></asp:TextBox>
+                     <asp:TextBox ID="txtNombre" ClientIDMode="Static" class="form-control" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -45,7 +62,7 @@
                     <asp:Label ID="lbCosto" runat="server" Text="Precio de Costo"></asp:Label>
                 </td>
                 <td>
-                     <asp:TextBox ID="txtCosto" ClientIDMode="Static" class="form-control" runat="server" Enabled="true"></asp:TextBox>
+                     <asp:TextBox ID="txtCosto" ClientIDMode="Static" class="form-control" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -53,7 +70,7 @@
                     <asp:Label ID="lbVenta" runat="server" Text="Precio de Venta"></asp:Label>
                 </td>
                 <td>
-                     <asp:TextBox ID="txtVenta" ClientIDMode="Static" class="form-control" runat="server" Enabled="true"></asp:TextBox>
+                     <asp:TextBox ID="txtVenta" ClientIDMode="Static" class="form-control" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -61,9 +78,10 @@
                     <asp:Label ID="lbMayor" runat="server" Text="Precio por Mayor"></asp:Label>
                 </td>
                 <td>
-                     <asp:TextBox ID="txtMayor" ClientIDMode="Static" class="form-control" runat="server" Enabled="true"></asp:TextBox>
+                     <asp:TextBox ID="txtMayor" ClientIDMode="Static" class="form-control" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
+            </div>
         </table>
         <asp:LinkButton ID="btnModificar" runat="server" class="btn btn-default btnModificar" OnClientClick="Confirmar_Modificar();" CausesValidation="False" OnClick="btnModificar_Click">
             <span class="glyphicon glyphicon-floppy-save"></span><span style="margin-left:1em">Modificar</span>
