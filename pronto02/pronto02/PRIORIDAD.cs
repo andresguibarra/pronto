@@ -12,18 +12,11 @@ namespace pronto02
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCTO
+    public partial class PRIORIDAD
     {
-        public decimal Id { get; set; }
-        public string cod_barras { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
-        public decimal Precio_costo { get; set; }
-        public decimal Precio_venta { get; set; }
-        public decimal Ganancia { get; set; }
-        public decimal Stock { get; set; }
-        public Nullable<decimal> Precio_Mayor { get; set; }
-        public Nullable<int> IdPrioridad { get; set; }
-    
-        public virtual CATEGORIA CATEGORIA { get; set; }
+        public int cantidad_media { get; set; }
+        public int cantidad_minima { get; set; }
     }
 }
