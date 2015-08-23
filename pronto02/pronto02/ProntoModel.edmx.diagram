@@ -7,11 +7,12 @@
       <Diagram DiagramId="b76e91645a2e4c6da67e512c6b582ff6" Name="Diagram1">
         <EntityTypeShape EntityType="PRONTODBModel.CATEGORIA" Width="1.75" PointX="0.75" PointY="1.375" />
         <EntityTypeShape EntityType="PRONTODBModel.PRODUCTO" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="PRONTODBModel.Vn_Categoria" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" />
         <EntityTypeShape EntityType="PRONTODBModel.Proveedor" Width="1.5" PointX="7.5" PointY="2.875" />
         <EntityTypeShape EntityType="PRONTODBModel.Contacto" Width="1.5" PointX="10.375" PointY="3" />
         <EntityTypeShape EntityType="PRONTODBModel.VENTAS" Width="1.5" PointX="6.5" PointY="0.625" />
+        <EntityTypeShape EntityType="PRONTODBModel.PRIORIDAD" Width="1.5" PointX="5" PointY="3.75" />
+        <EntityTypeShape EntityType="PRONTODBModel.Vn_Categoria" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,100 +4,117 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PRONTODBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="PRONTODBModelStoreContainer">
-    <EntitySet Name="CATEGORIA" EntityType="PRONTODBModel.Store.CATEGORIA" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PRODUCTO" EntityType="PRONTODBModel.Store.PRODUCTO" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Vn_Categoria" EntityType="PRONTODBModel.Store.Vn_Categoria" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Proveedor" EntityType="PRONTODBModel.Store.Proveedor" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Contacto" EntityType="PRONTODBModel.Store.Contacto" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="VENTAS" EntityType="PRONTODBModel.Store.VENTAS" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK__PRODUCTO__Catego__02FC7413" Association="PRONTODBModel.Store.FK__PRODUCTO__Catego__02FC7413">
-      <End Role="CATEGORIA" EntitySet="CATEGORIA" />
-      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="CATEGORIA">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="PRODUCTO">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="10" Scale="0" />
-    <Property Name="cod_barras" Type="varchar" Nullable="true" MaxLength="40" />
-    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Precio_costo" Type="decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="Precio_venta" Type="decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="Ganancia" Type="decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="Stock" Type="decimal" Nullable="false" Precision="10" Scale="0" />
-    <Property Name="Precio_Mayor" Type="decimal" Nullable="true" Precision="10" Scale="2" />
-    <Property Name="IdPrioridad" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="CATEGORIA_id" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Vn_Categoria">
-    <Key>
-      <PropertyRef Name="Categoria" />
-      <PropertyRef Name="Nombre" />
-    </Key>
-    <Property Name="Categoria" Type="int" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Cantidad" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Proveedor">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
-    <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Telefono" Type="nvarchar" Nullable="false" MaxLength="40" />
-    <Property Name="CUIT" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Razon_Social" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Contacto">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
-    <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="40" />
-    <Property Name="Telefono" Type="nvarchar" Nullable="false" MaxLength="40" />
-  </EntityType>
-  <EntityType Name="VENTAS">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FechayHora" Type="datetime" Nullable="false" />
-    <Property Name="ImporteTotal" Type="float" Nullable="false" />
-  </EntityType>
-  <Association Name="FK__PRODUCTO__Catego__02FC7413">
-    <End Role="CATEGORIA" Type="PRONTODBModel.Store.CATEGORIA" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="PRODUCTO" Type="PRONTODBModel.Store.PRODUCTO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CATEGORIA">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="PRODUCTO">
-        <PropertyRef Name="CATEGORIA_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="PRONTODBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRIORIDAD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cantidad_media" Type="int" Nullable="false" />
+          <Property Name="cantidad_minima" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_barras" Type="varchar" MaxLength="40" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio_costo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Ganancia" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Precio_Mayor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IdPrioridad" Type="int" />
+          <Property Name="CATEGORIA_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CUIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Razon_Social" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VENTAS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechayHora" Type="datetime" Nullable="false" />
+          <Property Name="ImporteTotal" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vn_Categoria">
+          <Key>
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
+        <Association Name="FK__PRODUCTO__Catego__02FC7413">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="CATEGORIA_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PRONTODBModelStoreContainer">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRIORIDAD" EntityType="Self.PRIORIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTAS" EntityType="Self.VENTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vn_Categoria" EntityType="Self.Vn_Categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vn_Categoria].[Categoria] AS [Categoria], 
+    [Vn_Categoria].[Nombre] AS [Nombre], 
+    [Vn_Categoria].[Cantidad] AS [Cantidad]
+    FROM [dbo].[Vn_Categoria] AS [Vn_Categoria]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__PRODUCTO__Catego__02FC7413" Association="Self.FK__PRODUCTO__Catego__02FC7413">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PRONTODBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PRONTODBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CATEGORIA" EntityType="PRONTODBModel.CATEGORIA" />
           <EntitySet Name="PRODUCTO" EntityType="PRONTODBModel.PRODUCTO" />
-          <EntitySet Name="Vn_Categoria" EntityType="PRONTODBModel.Vn_Categoria" />
           <AssociationSet Name="FK__PRODUCTO__Catego__02FC7413" Association="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
@@ -105,6 +122,8 @@
           <EntitySet Name="Proveedor" EntityType="PRONTODBModel.Proveedor" />
           <EntitySet Name="Contacto" EntityType="PRONTODBModel.Contacto" />
           <EntitySet Name="VENTAS" EntityType="PRONTODBModel.VENTAS" />
+          <EntitySet Name="PRIORIDAD" EntityType="PRONTODBModel.PRIORIDAD" />
+          <EntitySet Name="Vn_Categoria" EntityType="PRONTODBModel.Vn_Categoria" />
         </EntityContainer>
         <EntityType Name="CATEGORIA">
           <Key>
@@ -127,16 +146,7 @@
           <Property Name="Stock" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
           <NavigationProperty Name="CATEGORIA" Relationship="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" FromRole="PRODUCTO" ToRole="CATEGORIA" />
           <Property Name="Precio_Mayor" Type="Decimal" Nullable="true" Precision="10" Scale="2" />
-          <Property Name="IdPrioridad" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Vn_Categoria">
-          <Key>
-            <PropertyRef Name="Categoria" />
-            <PropertyRef Name="Nombre" />
-          </Key>
-          <Property Name="Categoria" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="IdPrioridad" Type="Int32" Nullable="true" />
         </EntityType>
         <Association Name="FK__PRODUCTO__Catego__02FC7413">
           <End Type="PRONTODBModel.CATEGORIA" Role="CATEGORIA" Multiplicity="0..1">
@@ -172,6 +182,24 @@
           <Property Name="FechayHora" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ImporteTotal" Type="Double" Nullable="false" />
         </EntityType>
+        <EntityType Name="PRIORIDAD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="cantidad_media" Type="Int32" Nullable="false" />
+          <Property Name="cantidad_minima" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vn_Categoria">
+          <Key>
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -198,15 +226,6 @@
           <ScalarProperty Name="Stock" ColumnName="Stock" />
           <ScalarProperty Name="Precio_Mayor" ColumnName="Precio_Mayor" />
           <ScalarProperty Name="IdPrioridad" ColumnName="IdPrioridad" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Vn_Categoria">
-      <EntityTypeMapping TypeName="IsTypeOf(PRONTODBModel.Vn_Categoria)">
-        <MappingFragment StoreEntitySet="Vn_Categoria">
-          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -241,6 +260,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PRIORIDAD">
+      <EntityTypeMapping TypeName="IsTypeOf(PRONTODBModel.PRIORIDAD)">
+        <MappingFragment StoreEntitySet="PRIORIDAD">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="cantidad_media" ColumnName="cantidad_media" />
+          <ScalarProperty Name="cantidad_minima" ColumnName="cantidad_minima" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="FK__PRODUCTO__Catego__02FC7413" TypeName="PRONTODBModel.FK__PRODUCTO__Catego__02FC7413" StoreEntitySet="PRODUCTO">
       <EndProperty Name="CATEGORIA">
         <ScalarProperty Name="id" ColumnName="CATEGORIA_id" />
@@ -250,6 +279,15 @@
       </EndProperty>
       <Condition ColumnName="CATEGORIA_id" IsNull="false" />
     </AssociationSetMapping>
+          <EntitySetMapping Name="Vn_Categoria">
+            <EntityTypeMapping TypeName="PRONTODBModel.Vn_Categoria">
+              <MappingFragment StoreEntitySet="Vn_Categoria">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
