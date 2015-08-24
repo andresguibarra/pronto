@@ -22,45 +22,65 @@ function Confirmar_Eliminar() {
     document.forms[0].appendChild(confirm_value);
 }
 
-function incrementarStock () {
+function incrementarStock() {
     var valor = document.getElementById("txtStock").value
     valor = parseInt(valor) + 1;
     $("#txtStock").val(valor);
 }
 
 
-function disminuirStock () {
+function disminuirStock() {
     var valor = document.getElementById("txtStock").value;
     valor = parseInt(valor) - 1;
     $("#txtStock").val(valor);
-    
+
 }
 
 $(document).ready(function () {
+    deshabilitarCampos();
+
+    $("[name='my-checkbox']").bootstrapSwitch('state',false);
+    $("[name='my-checkbox']").prop("checked",false)
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
 
 
-    //modificarDatos();
+        if ($("[name='my-checkbox']").prop("checked")) {
 
-    $("input:radio[name=sam1]").click(mod)
+            $("#txtNombre").prop('disabled', false);
+            $("#txtCosto").prop('disabled', false);
+            $("#txtVenta").prop('disabled', false);
+            $("#txtMayor").prop('disabled', false);
+            $("#modificarNo").prop("checked", false);
+        }
+        else {
+            $("#txtNombre, #txtCosto, #txtVenta, #txtMayor").prop('disabled', true);
+            $("#modificarSi").prop("checked", false);
+        }
+
+    });
+    //$("#modificarNo").prop("checked", true);
 });
 
-var mod= function modificarDatos() {
-    
-    if ($("#modificarSi").prop("checked")) {
+
+function deshabilitarCampos() {
+
+    $("#txtID, #txtCodigoBarras").prop('disabled', true);
+    $("#txtNombre, #txtCosto, #txtVenta, #txtMayor").prop('disabled', true);
+}
+var mod = function modificarDatos() {
+
+    if ($("[name='my-checkbox']").prop("checked")) {
 
         $("#txtNombre").prop('disabled', false);
         $("#txtCosto").prop('disabled', false);
         $("#txtVenta").prop('disabled', false);
         $("#txtMayor").prop('disabled', false);
         $("#modificarNo").prop("checked", false);
-        }
-    else if ($("#modificarNo").prop("checked")) {
-        $("#txtNombre").prop('disabled', true);
-        $("#txtCosto").prop('disabled', true);
-        $("#txtVenta").prop('disabled', true);
-        $("#txtMayor").prop('disabled', true);
+    }
+    else if ($("[name='my-checkbox']").prop("checked")) {
+        $("#txtNombre, #txtCosto, #txtVenta, #txtMayor").prop('disabled', true);
         $("#modificarSi").prop("checked", false);
-        }
-    
+    }
+
 }
 

@@ -285,10 +285,12 @@
     <Content Include="Consulta.aspx" />
     <Content Include="Estilos\actualizarStock.css" />
     <Content Include="Estilos\alta.css" />
+    <Content Include="Estilos\bootstrap-switch.css" />
     <Content Include="Estilos\consulta.css" />
     <Content Include="Estilos\docs.min.css" />
     <Content Include="Estilos\General.css" />
     <Content Include="Estilos\medicamentos.css" />
+    <Content Include="Estilos\modificarProducto.css" />
     <Content Include="Estilos\proveedores.css" />
     <Content Include="Estilos\venta.css" />
     <Content Include="Faltantes.aspx" />
@@ -342,6 +344,7 @@
       <LastGenOutput>ProntoModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\categoria.js" />
