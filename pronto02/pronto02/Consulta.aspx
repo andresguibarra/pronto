@@ -9,6 +9,7 @@
 
         <div class="row">
 
+
             <div class="col-md-4">
                 <asp:TextBox ID="txtCodBarras" runat="server" ClientIDMode="Static" placeholder="Buscar por Código de barras" CssClass="form-control"></asp:TextBox>
             </div>

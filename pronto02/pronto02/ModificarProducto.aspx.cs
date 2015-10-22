@@ -151,5 +151,6 @@ namespace pronto02
             txtVenta.Text = null;
             txtMayor.Text = null;
         }
+
     }
 }

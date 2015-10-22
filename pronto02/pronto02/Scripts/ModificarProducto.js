@@ -21,3 +21,66 @@ function Confirmar_Eliminar() {
     }
     document.forms[0].appendChild(confirm_value);
 }
+
+function incrementarStock() {
+    var valor = document.getElementById("txtStock").value
+    valor = parseInt(valor) + 1;
+    $("#txtStock").val(valor);
+}
+
+
+function disminuirStock() {
+    var valor = document.getElementById("txtStock").value;
+    valor = parseInt(valor) - 1;
+    $("#txtStock").val(valor);
+
+}
+
+$(document).ready(function () {
+    deshabilitarCampos();
+
+    $("[name='my-checkbox']").bootstrapSwitch('state',false);
+    $("[name='my-checkbox']").prop("checked",false)
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+
+
+        if ($("[name='my-checkbox']").prop("checked")) {
+
+            $("#txtNombre").prop('disabled', false);
+            $("#txtCosto").prop('disabled', false);
+            $("#txtVenta").prop('disabled', false);
+            $("#txtMayor").prop('disabled', false);
+            $("#modificarNo").prop("checked", false);
+        }
+        else {
+            $("#txtNombre, #txtCosto, #txtVenta, #txtMayor").prop('disabled', true);
+            $("#modificarSi").prop("checked", false);
+        }
+
+    });
+    //$("#modificarNo").prop("checked", true);
+});
+
+
+function deshabilitarCampos() {
+
+    $("#txtID, #txtCodigoBarras").prop('disabled', true);
+    $("#txtNombre, #txtCosto, #txtVenta, #txtMayor").prop('disabled', true);
+}
+var mod = function modificarDatos() {
+
+    if ($("[name='my-checkbox']").prop("checked")) {
+
+        $("#txtNombre").prop('disabled', false);
+        $("#txtCosto").prop('disabled', false);
+        $("#txtVenta").prop('disabled', false);
+        $("#txtMayor").prop('disabled', false);
+        $("#modificarNo").prop("checked", false);
+    }
+    else if ($("[name='my-checkbox']").prop("checked")) {
+        $("#txtNombre, #txtCosto, #txtVenta, #txtMayor").prop('disabled', true);
+        $("#modificarSi").prop("checked", false);
+    }
+
+}
+

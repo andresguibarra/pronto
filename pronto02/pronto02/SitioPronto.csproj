@@ -285,10 +285,12 @@
     <Content Include="Consulta.aspx" />
     <Content Include="Estilos\actualizarStock.css" />
     <Content Include="Estilos\alta.css" />
+    <Content Include="Estilos\bootstrap-switch.css" />
     <Content Include="Estilos\consulta.css" />
     <Content Include="Estilos\docs.min.css" />
     <Content Include="Estilos\General.css" />
     <Content Include="Estilos\medicamentos.css" />
+    <Content Include="Estilos\modificarProducto.css" />
     <Content Include="Estilos\proveedores.css" />
     <Content Include="Estilos\venta.css" />
     <Content Include="Faltantes.aspx" />
@@ -342,6 +344,7 @@
       <LastGenOutput>ProntoModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\categoria.js" />
@@ -477,6 +480,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EstadoProducto.cs" />
     <Compile Include="Faltantes.aspx.cs">
       <DependentUpon>Faltantes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -513,6 +517,9 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="PRIORIDAD.cs">
+      <DependentUpon>ProntoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PRODUCTO.cs">
       <DependentUpon>ProntoModel.tt</DependentUpon>
     </Compile>
