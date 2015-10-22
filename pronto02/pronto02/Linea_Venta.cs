@@ -5,7 +5,7 @@ using System.Web;
 
 namespace pronto02
 {
-    public class Linea_Venta
+    public partial class Linea_Venta
     {
         #region ATRIBUTOS
         private String nombre_producto;
@@ -21,6 +21,8 @@ namespace pronto02
             this.unidades = u;
             this.precio = p;
             this.subtotal = u * p;
+        }
+        public Linea_Venta(){
         }
         #endregion
 

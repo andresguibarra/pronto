@@ -43,7 +43,11 @@
                         <asp:BoundField HeaderText="Precio por Mayor" DataField="Precio_Mayor" />
 
                         <asp:BoundField ItemStyle-CssClass="id" HeaderStyle-CssClass="id" DataField="Id" />
-
+                        <asp:TemplateField HeaderText="Agregar a Venta">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnAgregar" runat="server" OnClick="btnAgregar_Click" ><span class="glyphicon glyphicon-share-alt" style="margin-left:4em;"></span></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>

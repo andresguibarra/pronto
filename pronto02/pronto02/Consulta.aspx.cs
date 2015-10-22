@@ -70,6 +70,27 @@ namespace pronto02
                 GridView1.DataBind();
             }
         }
+        public List<Linea_Venta> listaVentas
+        {
+            get
+            {
+                if (HttpContext.Current.Session["listaVentas"] == null)
+                {
+                    HttpContext.Current.Session["listaVentas"] = new List<Linea_Venta>();
+                }
+                return (List<Linea_Venta>)HttpContext.Current.Session["listaVentas"];
+            }
+            set
+            {
+                HttpContext.Current.Session["listaVentas"] = value;
+            }
+        }
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Linea_Venta lineaVenta= new Linea_Venta();
+            //lineaVenta.Nombre_Producto = 
+            //listaVentas.Add()
+        }
 
 
 

@@ -10,37 +10,37 @@ namespace pronto02
     public partial class Alta : System.Web.UI.Page
     {
         #region Propiedades
-        public List<CATEGORIA> listaCategorias
-        {
-            get
-            {
+        //public List<CATEGORIA> listaCategorias
+        //{
+        //    get
+        //    {
 
-                if (HttpContext.Current.Session["listaCategorias"] == null)
-                    HttpContext.Current.Session["listaCategorias"] = new List<CATEGORIA>();
-                return (List<CATEGORIA>)HttpContext.Current.Session["listaCategorias"];
-            }
-            set
-            {
-                HttpContext.Current.Session["listaCategorias"] = value;
-            }
-        }
+        //        if (HttpContext.Current.Session["listaCategorias"] == null)
+        //            HttpContext.Current.Session["listaCategorias"] = new List<CATEGORIA>();
+        //        return (List<CATEGORIA>)HttpContext.Current.Session["listaCategorias"];
+        //    }
+        //    set
+        //    {
+        //        HttpContext.Current.Session["listaCategorias"] = value;
+        //    }
+        //}
 
-        public PRONTODBEntities db
-        {
-            get
-            {
-                if (HttpContext.Current.Session["db"] == null)
-                {
-                    HttpContext.Current.Session["db"] = new PRONTODBEntities();
-                }
-                return (PRONTODBEntities)HttpContext.Current.Session["db"];
-            }
-            set
-            {
-                HttpContext.Current.Session["db"] = value;
-            }
+        //public PRONTODBEntities db
+        //{
+        //    get
+        //    {
+        //        if (HttpContext.Current.Session["db"] == null)
+        //        {
+        //            HttpContext.Current.Session["db"] = new PRONTODBEntities();
+        //        }
+        //        return (PRONTODBEntities)HttpContext.Current.Session["db"];
+        //    }
+        //    set
+        //    {
+        //        HttpContext.Current.Session["db"] = value;
+        //    }
 
-        }
+        //}
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,48 +54,52 @@ namespace pronto02
         {
             try
             {
-                string nombreProducto = this.txtNombreProducto.Text;
-                CATEGORIA categoria = listaCategorias.Find(x => x.nombre.Equals(this.basic.Value));
-                decimal precioCosto;
-                decimal ganancia;
-                decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
-                decimal precioMayor;
-                if (String.IsNullOrEmpty(this.txtPrecioCosto.Text))
+                using (var db = new PRONTODBEntities())
                 {
-                    precioCosto = 0;
-                    ganancia = 0;
+                    string nombreProducto = this.txtNombreProducto.Text;
+                    CATEGORIA categoria = db.CATEGORIA.SingleOrDefault(x => x.nombre.Equals(this.basic.Value));
+                    decimal precioCosto;
+                    decimal ganancia;
+                    decimal precioVenta = decimal.Parse(this.txtPrecioVenta.Text);
+                    decimal precioMayor;
+                    if (String.IsNullOrEmpty(this.txtPrecioCosto.Text))
+                    {
+                        precioCosto = 0;
+                        ganancia = 0;
+                    }
+                    else
+                    {
+                        precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
+                        ganancia = precioVenta - precioCosto;
+                    }
+                    if (String.IsNullOrEmpty(this.txtPrecioMayor.Text))
+                    {
+                        precioMayor = 0M;
+                    }
+                    else
+                    {
+                        precioMayor = decimal.Parse(this.txtPrecioMayor.Text);
+                    }
+                    var producto = new PRODUCTO { cod_barras = this.txtCodigoDeBarras.Text, Nombre = nombreProducto, Stock = 1, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia, Precio_Mayor = precioMayor };
+                    db.PRODUCTO.Add(producto);
+                    db.SaveChanges();
                 }
-                else
-                {
-                    precioCosto = decimal.Parse(this.txtPrecioCosto.Text);
-                    ganancia = precioVenta - precioCosto;
-                }
-                if (String.IsNullOrEmpty(this.txtPrecioMayor.Text ))
-                {
-                    precioMayor = 0M;
-                }
-                else
-                {
-                    precioMayor = decimal.Parse(this.txtPrecioMayor.Text);
-                }
-                var producto = new PRODUCTO { cod_barras = this.txtCodigoDeBarras.Text, Nombre = nombreProducto, Stock = 1, Precio_venta = precioVenta, Precio_costo = precioCosto, CATEGORIA = categoria, Ganancia = ganancia, Precio_Mayor = precioMayor };
-                db.PRODUCTO.Add(producto);
-                db.SaveChanges();
                 vaciarCampos();
             }
             catch (FormatException)
             {
                 string message = "No se han completado todos los campos correctamente.";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + message + "');", true);
+                Utilidades.Alert(this, message);
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + ex.Message + "');", true);
+                Utilidades.Alert(this, ex.Message);
 
             }
 
         }
-        private void vaciarCampos() {
+        private void vaciarCampos()
+        {
 
             this.txtCodigoDeBarras.Text = string.Empty;
             this.txtNombreProducto.Text = string.Empty;
@@ -105,15 +109,15 @@ namespace pronto02
         }
         private void cargarComboCategoria()
         {
-            listaCategorias = db.CATEGORIA.ToList();
-            foreach (CATEGORIA c in listaCategorias)
+            using (var db = new PRONTODBEntities())
             {
-                this.basic.Items.Add(new ListItem(c.nombre));
+                //listaCategorias = db.CATEGORIA.ToList();
+                foreach (CATEGORIA c in db.CATEGORIA.ToList())
+                {
+                    this.basic.Items.Add(new ListItem(c.nombre));
+                }
             }
         }
-        protected void Page_UnLoad(object sender, EventArgs e)
-        {
-            db.Database.Connection.Close();
-        }
+        
     }
 }
