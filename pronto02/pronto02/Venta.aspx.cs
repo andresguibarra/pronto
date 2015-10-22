@@ -10,7 +10,7 @@ namespace pronto02
     public partial class Venta : System.Web.UI.Page
     {
         PRONTODBEntities db = new PRONTODBEntities();
-        public List<Linea_Venta> listaVentas
+        public static List<Linea_Venta> listaVentas
         {
             get
             {

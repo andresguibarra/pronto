@@ -569,6 +569,7 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilidades\Comercial.cs" />
     <Compile Include="Utilidades\Utilidades.cs" />
     <Compile Include="Venta.aspx.cs">
       <DependentUpon>Venta.aspx</DependentUpon>
