@@ -44,37 +44,37 @@
             <ul class="bs-glyphicons-list">
 
                 <li>
-                    <a href="/Alta">
+                    <a href="~/Alta" runat="server">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <span class="glyphicon-class">Alta Producto</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/Consulta">
+                    <a href="~/Consulta" runat="server">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         <span class="glyphicon-class">Consulta Productos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/Categoria">
+                    <a href="~/Categoria" runat="server">
                         <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                         <span class="glyphicon-class">Categorias</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/Proveedores">
+                    <a href="~/Proveedores" runat="server">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span class="glyphicon-class">Contactos y Proveedores</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/Venta">
+                    <a href="~/Venta" runat="server">
                         <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
                         <span class="glyphicon-class">Venta</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/ActualizarStock">
+                    <a href="~/ActualizarStock" runat="server">
                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                         <span class="glyphicon-class">Actualizar Stock</span>
                     </a>

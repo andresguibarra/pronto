@@ -64,8 +64,6 @@
           <Property Name="FechayHora" Type="datetime" Nullable="false" />
           <Property Name="ImporteTotal" Type="float" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vn_Categoria">
           <Key>
             <PropertyRef Name="Categoria" />
@@ -96,13 +94,7 @@ advertencia 6002: La tabla o vista 'aspnet-pronto02-20150613052943.dbo.Vn_Catego
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENTAS" EntityType="Self.VENTAS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vn_Categoria" EntityType="Self.Vn_Categoria" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Vn_Categoria].[Categoria] AS [Categoria], 
-    [Vn_Categoria].[Nombre] AS [Nombre], 
-    [Vn_Categoria].[Cantidad] AS [Cantidad]
-    FROM [dbo].[Vn_Categoria] AS [Vn_Categoria]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Vn_Categoria" EntityType="Self.Vn_Categoria" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__PRODUCTO__Catego__02FC7413" Association="Self.FK__PRODUCTO__Catego__02FC7413">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
