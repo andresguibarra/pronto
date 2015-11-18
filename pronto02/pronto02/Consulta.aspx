@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Consulta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Consulta.aspx.cs" Inherits="pronto02.Consulta" %>
+﻿ <%@ Page Title="Consulta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Consulta.aspx.cs" Inherits="pronto02.Consulta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="BootstrapSelect/dist/css/bootstrap-select.css" rel="stylesheet" />
@@ -27,11 +27,11 @@
         </div>
         <asp:UpdatePanel runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" DataKeyNames="ID" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnModificar" runat="server" Text="Modificar" OnClientClick="modificar(this); return false;"></asp:LinkButton>
+                                <asp:LinkButton ID="btnModificar" runat="server" Text="Modificar"  OnClientClick="modificar(this); return false;"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderText="Codigo de Barras" DataField="cod_barras" />
@@ -43,12 +43,12 @@
                         <asp:BoundField HeaderText="Stock" DataField="Stock" />
                         <asp:BoundField HeaderText="Precio por Mayor" DataField="Precio_Mayor" />
 
-                        <asp:BoundField ItemStyle-CssClass="id" HeaderStyle-CssClass="id" DataField="Id" />
                         <asp:TemplateField HeaderText="Agregar a Venta">
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnAgregar" runat="server" OnClick="btnAgregar_Click" ><span class="glyphicon glyphicon-share-alt" style="margin-left:4em;"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btnAgregar" CommandName="Agregar" CommandArgument='<%#Eval("Id")%>' runat="server"><span class="glyphicon glyphicon-share-alt" style="margin-left:4em;"></span></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:BoundField ItemStyle-CssClass="id" HeaderStyle-CssClass="id" DataField="Id" /> <%--IMPORTANTE: Mantener el Id al final de la grilla--%>
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>

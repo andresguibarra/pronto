@@ -70,26 +70,16 @@ namespace pronto02
                 GridView1.DataBind();
             }
         }
-        public List<Linea_Venta> listaVentas
+        
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            get
+            if (e.CommandName=="Agregar")
             {
-                if (HttpContext.Current.Session["listaVentas"] == null)
-                {
-                    HttpContext.Current.Session["listaVentas"] = new List<Linea_Venta>();
-                }
-                return (List<Linea_Venta>)HttpContext.Current.Session["listaVentas"];
+                Comercial.AgregarAVenta(Convert.ToDecimal(e.CommandArgument));
+                Utilidades.Alert(this,"El producto ha sido agregado a ventas");
+                Response.Redirect("Venta.aspx");
             }
-            set
-            {
-                HttpContext.Current.Session["listaVentas"] = value;
-            }
-        }
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Linea_Venta lineaVenta= new Linea_Venta();
-            //lineaVenta.Nombre_Producto = 
-            //listaVentas.Add()
         }
 
 

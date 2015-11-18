@@ -56,13 +56,13 @@ namespace pronto02
                 catch (ArgumentNullException)
                 {
                     string message = "Faltan argumentos de entrada para acceder a esta pagina.";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + message + "');", true);
+                    Utilidades.Alert(this, message);
                     btnEliminar.Visible = false;
                     btnModificar.Visible = false;
                 }
                 catch (Exception ex)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + ex.Message + "');", true);
+                    Utilidades.Alert(this, ex.Message);
                     btnEliminar.Visible = false;
                     btnModificar.Visible = false;
                 }
@@ -135,7 +135,7 @@ namespace pronto02
             else
             {
                 string message = "Valores incorrectos. No se devolvio ningun resultado o hay mas de un resultado posible.";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + message + "');", true);
+                Utilidades.Alert(this, message);
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
             }
